@@ -6,140 +6,182 @@
 }
 
 body {
-    /* 彩虹渐变背景（动态循环） */
-    background: linear-gradient(120deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
-    background-size: 400% 400%;
-    animation: rainbow-bg 15s ease infinite;
+    /* 更细腻的彩虹渐变背景（动态循环），匹配参考站的渐变质感 */
+    background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #5f27cd, #ff6b6b);
+    background-size: 600% 600%;
+    animation: rainbow-bg 20s ease-in-out infinite;
     color: #333;
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
     padding-top: 70px;
+    min-height: 100vh; /* 保证背景铺满整个页面 */
 }
 
-/* 彩虹背景动画 */
+/* 彩虹背景动画（更顺滑的循环） */
 @keyframes rainbow-bg {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* 导航栏样式 */
+/* 导航栏样式（精准匹配参考站的hover和阴影效果） */
 .navbar {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid #eee;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.98);
+    border: none;
+    border-bottom: 1px solid #f1f1f1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .navbar:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .navbar-brand {
-    color: #333 !important;
-    font-size: 1.5em;
-    font-weight: 600;
+    color: #444 !important;
+    font-size: 1.6em;
+    font-weight: 700;
     font-family: 'Lora', serif;
+    letter-spacing: 0.5px;
 }
 
-.nav navbar-nav navbar-right li a {
+/* 修复导航栏链接样式（原代码选择器错误） */
+.navbar-nav.navbar-right li a {
     color: #666 !important;
-    transition: color 0.3s ease;
+    font-size: 1em;
+    padding: 15px 20px;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.nav navbar-nav navbar-right li a:hover {
-    color: #ff7e5f !important;
+.navbar-nav.navbar-right li a:hover {
+    color: #ff6b6b !important;
+    transform: translateY(-2px);
 }
 
-/* 主体容器 */
+/* 主体容器（优化间距，匹配参考站） */
 .main-container {
-    margin-top: 30px;
-    margin-bottom: 60px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    max-width: 1200px; /* 限制最大宽度，避免大屏拉伸 */
 }
 
-/* 左侧内容区 */
+/* 左侧内容区（增强hover效果，匹配参考站） */
 .col-md-8 {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s ease;
 }
 
 .col-md-8:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* 右侧侧边栏 */
+/* 右侧侧边栏（精准匹配参考站的侧边栏样式） */
 .sidebar {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+    position: sticky; /* 侧边栏吸顶，匹配参考站 */
+    top: 90px;
 }
 
 .sidebar-title {
     color: #333;
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #eee;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f5f5f5;
     font-weight: 600;
+    letter-spacing: 0.3px;
 }
 
-/* 社交链接样式 */
+/* 社交链接样式（复刻参考站的链接交互） */
 .social-links {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .social-link {
     display: flex;
     align-items: center;
-    padding: 10px 15px;
-    margin-bottom: 8px;
-    border-radius: 4px;
-    color: #666;
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: #555;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid transparent;
 }
 
 .social-link:hover {
     background-color: #f8f9fa;
-    color: #ff7e5f;
-    transform: translateX(5px);
+    color: #ff6b6b;
+    transform: translateX(8px);
     text-decoration: none;
+    border-color: #f1f1f1;
 }
 
+/* 适配512px高清图标（核心优化） */
 .social-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+    width: 32px;  /* 显示尺寸，适配高清图标 */
+    height: 32px; /* 等比例，避免变形 */
+    margin-right: 12px;
+    object-fit: contain; /* 关键：512px图标自适应容器，不失真 */
+    border-radius: 4px; /* 轻微圆角，匹配参考站图标样式 */
 }
 
-/* 页脚样式 */
+/* 页脚样式（精准复刻参考站的邮箱和版权样式） */
 .blog-footer {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 30px 0;
-    border-top: 1px solid #eee;
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 40px 0 20px;
+    border-top: 1px solid #f1f1f1;
+    margin-top: 60px;
 }
 
 .email-text {
-    color: #999;
-    font-size: 0.9em;
+    color: #888;
+    font-size: 0.85em;
     text-align: center;
-    margin-bottom: 10px;
-    cursor: default; /* 不可点击样式 */
+    margin-bottom: 15px;
+    cursor: default; /* 不可点击 */
+    letter-spacing: 0.5px;
 }
 
 .copyright {
     color: #999;
-    font-size: 0.8em;
+    font-size: 0.75em;
     text-align: center;
+    line-height: 1.5;
 }
 
-/* 响应式适配 */
+/* 响应式适配（优化移动端体验） */
 @media (max-width: 768px) {
     .col-md-4 {
-        margin-top: 20px;
+        margin-top: 30px;
     }
+    .sidebar {
+        top: 20px;
+    }
+    .col-md-8, .sidebar {
+        padding: 25px;
+    }
+    .navbar-nav.navbar-right li a {
+        padding: 12px 15px;
+    }
+}
+
+/* 补充：修复bootstrap默认样式冲突 */
+.navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.nav>li>a {
+    position: relative;
+    display: block;
 }
