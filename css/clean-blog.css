@@ -176,9 +176,18 @@ body {
 }
 
 /* 补充：修复bootstrap默认样式冲突 */
-.navbar-collapse {
-    padding-right: 0;
-    padding-left: 0;
+/* 导航栏样式 */
+.navbar {
+    /* 毛玻璃核心样式 */
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* 兼容Safari浏览器 */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    
+    /* 原有样式保留 */
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
 .nav>li>a {
