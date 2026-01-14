@@ -4,134 +4,406 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="林笙的个人博客">
-    <title>{% if page.title %}{{ page.title }} - 林笙{% else %}林笙的博客{% endif %}</title>
+    <meta name="description" content="林笙的个人主页">
+    <title>林笙 - 个人主页</title>
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
     <!-- 引入外部资源 -->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/clean-blog.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:400,700&family=Open+Sans:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 星空背景依赖 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <!-- 基础样式重置 -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #12141a !important; 
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none !important; }
+    </style>
 </head>
 <body>
-    <!-- 导航栏（添加毛玻璃内联样式） -->
-    <nav class="navbar navbar-default navbar-fixed-top" style="
-        background: rgba(255, 255, 255, 0.5) !important;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    <!-- 星空背景容器（和参考页一致） -->
+    <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <!-- 核心容器：和参考页完全一致的宽高/间距 -->
+    <div style="
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
     ">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-                    <span class="sr-only">切换导航</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <span class="navbar-brand">林笙</span>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ site.baseurl }}/">首页</a></li>
+        <!-- 左侧个人信息区：宽度占比、间距、样式1:1匹配参考页 -->
+        <div style="
+            width: 35%;
+            min-width: 300px;
+        ">
+            <div style="
+                background: rgba(18, 20, 26, 0.85);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 16px;
+                padding: 45px 35px;
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+                height: fit-content;
+                position: sticky;
+                top: 60px;
+            ">
+                <!-- 头像模块（和参考页位置/大小一致） -->
+                <div style="text-align: center; margin-bottom: 35px;">
+                    <img src="{{ site.baseurl }}/img/avatar.png" alt="林笙" style="
+                        width: 130px;
+                        height: 130px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        border: 3px solid rgba(0, 191, 255, 0.25);
+                        box-shadow: 0 0 25px rgba(0, 191, 255, 0.2);
+                    ">
+                </div>
+
+                <!-- 姓名/身份（参考页字体大小/间距） -->
+                <h1 style="
+                    font-size: 2em;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                    color: #fff;
+                    text-align: center;
+                    letter-spacing: 0.5px;
+                ">林笙</h1>
+                <p style="
+                    color: #a0aec0;
+                    font-size: 1.05em;
+                    margin-bottom: 30px;
+                    text-align: center;
+                ">兴趣分享 / 游戏 / 创作</p>
+
+                <!-- 分隔线（参考页样式） -->
+                <div style="
+                    height: 1px;
+                    background: rgba(255, 255, 255, 0.1);
+                    margin: 30px 0;
+                "></div>
+
+                <!-- 联系方式（参考页布局） -->
+                <div style="margin-bottom: 30px;">
+                    <p style="
+                        color: #cbd5e0;
+                        font-size: 0.95em;
+                        margin-bottom: 15px;
+                        display: flex;
+                        align-items: center;
+                    ">
+                        <i class="fa fa-envelope-o" style="
+                            color: #00bfff;
+                            font-size: 1.2em;
+                            margin-right: 12px;
+                            width: 20px;
+                            text-align: center;
+                        "></i>
+                        2585263682@qq.com
+                    </p>
+                </div>
+
+                <!-- 社交链接标题（参考页样式） -->
+                <h3 style="
+                    font-size: 1.15em;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                    color: #e2e8f0;
+                    padding-left: 5px;
+                ">社交平台</h3>
+
+                <!-- 社交链接列表（1:1匹配参考页布局） -->
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" style="
+                            display: flex;
+                            align-items: center;
+                            color: #cbd5e0;
+                            padding: 10px 15px;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                        ">
+                            <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="
+                                width: 22px;
+                                height: 22px;
+                                margin-right: 12px;
+                            ">
+                            <span>Steam 主页</span>
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" style="
+                            display: flex;
+                            align-items: center;
+                            color: #cbd5e0;
+                            padding: 10px 15px;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                        ">
+                            <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="
+                                width: 22px;
+                                height: 22px;
+                                margin-right: 12px;
+                            ">
+                            <span>抖音 主页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://space.bilibili.com/532722347?spm_id_from=333.1007.0.0" target="_blank" style="
+                            display: flex;
+                            align-items: center;
+                            color: #cbd5e0;
+                            padding: 10px 15px;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                        ">
+                            <img src="{{ site.baseurl }}/img/icons/bilibili.png" alt="B站" style="
+                                width: 22px;
+                                height: 22px;
+                                margin-right: 12px;
+                            ">
+                            <span>B站 主页</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>
 
-    <!-- 主体内容 -->
-    <div class="container main-container">
-        <div class="row">
-            <!-- 左侧博客内容区（添加毛玻璃内联样式） -->
-            <div class="col-md-8" style="
-                background: rgba(255, 255, 255, 0.5) !important;
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
-                border: 1px solid rgba(255, 255, 255, 0.2) !important;
-                border-radius: 12px;
-                padding: 30px;
-                box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+        <!-- 右侧项目展示区：宽度占比1:1匹配参考页 -->
+        <div style="
+            width: 65%;
+        ">
+            <div style="
+                background: rgba(18, 20, 26, 0.85);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 16px;
+                padding: 45px 35px;
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
                 margin-bottom: 20px;
             ">
-                {{ content }}
-            </div>
-            <!-- 右侧侧边栏 -->
-            <div class="col-md-4">
-                <!-- 侧边栏容器（添加毛玻璃内联样式） -->
-                <div class="sidebar" style="
-                    background: rgba(255, 255, 255, 0.5) !important;
-                    backdrop-filter: blur(15px);
-                    -webkit-backdrop-filter: blur(15px);
-                    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-                    border-radius: 12px;
-                    padding: 20px;
-                    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-                    position: sticky;
-                    top: 90px;
-                ">
-                    <!-- 主要项目分类 -->
-                    <div class="sidebar-module">
-                        <h4 class="sidebar-title">主要项目</h4>
-                        <ul class="social-links">
-                            <li>
-                                <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-link">
-                                    <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" class="social-icon">
-                                    <span>Steam 主页</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-link">
-                                    <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" class="social-icon">
-                                    <span>抖音 主页</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://space.bilibili.com/532722347?spm_id_from=333.1007.0.0" target="_blank" class="social-link">
-                                    <img src="{{ site.baseurl }}/img/icons/bilibili.png" alt="B站" class="social-icon">
-                                    <span>B站 主页</span>
-                                </a>
-                            </li>
-                        </ul>
+                <!-- 主要项目标题（参考页样式） -->
+                <h2 style="
+                    font-size: 1.5em;
+                    font-weight: 600;
+                    margin-bottom: 30px;
+                    color: #e2e8f0;
+                    padding-bottom: 15px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                ">主要项目</h2>
+
+                <!-- 项目卡片列表（1:1匹配参考页间距/样式） -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- 项目1 -->
+                    <div style="
+                        background: rgba(255, 255, 255, 0.04);
+                        border-radius: 12px;
+                        padding: 25px;
+                        transition: all 0.3s ease;
+                    ">
+                        <h3 style="
+                            font-size: 1.25em;
+                            font-weight: 600;
+                            margin-bottom: 12px;
+                            color: #00bfff;
+                        ">个人博客</h3>
+                        <p style="
+                            color: #a0aec0;
+                            font-size: 0.95em;
+                            line-height: 1.7;
+                        ">
+                            基于GitHub Pages搭建的个人兴趣分享主页，采用深色星空背景+毛玻璃设计，适配全终端，整合社交平台链接与个人作品展示。
+                        </p>
+                    </div>
+
+                    <!-- 项目2 -->
+                    <div style="
+                        background: rgba(255, 255, 255, 0.04);
+                        border-radius: 12px;
+                        padding: 25px;
+                        transition: all 0.3s ease;
+                    ">
+                        <h3 style="
+                            font-size: 1.25em;
+                            font-weight: 600;
+                            margin-bottom: 12px;
+                            color: #00bfff;
+                        ">游戏分享</h3>
+                        <p style="
+                            color: #a0aec0;
+                            font-size: 0.95em;
+                            line-height: 1.7;
+                        ">
+                            Steam平台游戏体验与攻略分享，涵盖单机、联机游戏测评，专注于独立游戏与多人协作类游戏的玩法解析。
+                        </p>
+                    </div>
+
+                    <!-- 项目3 -->
+                    <div style="
+                        background: rgba(255, 255, 255, 0.04);
+                        border-radius: 12px;
+                        padding: 25px;
+                        transition: all 0.3s ease;
+                    ">
+                        <h3 style="
+                            font-size: 1.25em;
+                            font-weight: 600;
+                            margin-bottom: 12px;
+                            color: #00bfff;
+                        ">短视频创作</h3>
+                        <p style="
+                            color: #a0aec0;
+                            font-size: 0.95em;
+                            line-height: 1.7;
+                        ">
+                            抖音/B站短视频内容创作，聚焦游戏剪辑、日常趣味分享，通过轻量化的视频形式传递兴趣内容。
+                        </p>
                     </div>
                 </div>
+            </div>
+
+            <!-- 纯前端项目模块（参考页二级项目区） -->
+            <div style="
+                background: rgba(18, 20, 26, 0.85);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 16px;
+                padding: 45px 35px;
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            ">
+                <h2 style="
+                    font-size: 1.5em;
+                    font-weight: 600;
+                    margin-bottom: 30px;
+                    color: #e2e8f0;
+                    padding-bottom: 15px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                ">兴趣内容</h2>
+
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="
+                        background: rgba(255, 255, 255, 0.04);
+                        border-radius: 12px;
+                        padding: 25px;
+                        transition: all 0.3s ease;
+                    ">
+                        <h3 style="
+                            font-size: 1.25em;
+                            font-weight: 600;
+                            margin-bottom: 12px;
+                            color: #00bfff;
+                        ">游戏攻略整理</h3>
+                        <p style="
+                            color: #a0aec0;
+                            font-size: 0.95em;
+                            line-height: 1.7;
+                        ">
+                            整理热门游戏的图文攻略，包含关卡技巧、装备搭配、剧情解析，方便玩家快速获取核心玩法。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 页脚版权（参考页底部位置） -->
+            <div style="
+                text-align: center;
+                margin-top: 40px;
+                color: #718096;
+                font-size: 0.85em;
+                letter-spacing: 0.3px;
+            ">
+                © 2025 林笙的个人主页 | 保留所有权利
             </div>
         </div>
     </div>
 
-    <!-- 页脚（修复邮箱对齐） -->
-<footer class="blog-footer" style="
-    background: rgba(255, 255, 255, 0.5) !important;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    padding: 30px 0;
-    border-top: 1px solid #eee;
-    margin-top: 60px;
-    text-align: center; /* 新增：让内容居中 */
-">
-    <div class="container">
-        <p class="email-text" style="
-            color: #888;
-            font-size: 0.85em;
-            margin-bottom: 15px;
-            cursor: default;
-            letter-spacing: 0.5px;
-            margin: 0 auto; /* 新增：保证水平居中 */
-        ">2585263682@qq.com</p>
-        <p class="copyright" style="
-            color: #999;
-            font-size: 0.75em;
-            line-height: 1.5;
-            margin: 10px 0 0; /* 调整间距 */
-        ">© 2025 林笙的博客 | 保留所有权利</p>
-    </div>
-</footer>
+    <!-- 星空背景脚本（和参考页粒子效果一致） -->
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: '#00bfff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.6, random: true },
+                size: { value: 2, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 180,
+                    color: '#00bfff',
+                    opacity: 0.15,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 0.8,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'grab' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 150, line_linked: { opacity: 0.3 } },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
 
-    <!-- 引入脚本 -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="{{ site.baseurl }}/js/clean-blog.js"></script>
+        // 社交链接/项目卡片hover效果（参考页交互）
+        document.addEventListener('DOMContentLoaded', function() {
+            // 社交链接hover
+            const socialLinks = document.querySelectorAll('ul li a');
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = 'rgba(0, 191, 255, 0.1)';
+                    this.style.color = '#00bfff';
+                    this.style.transform = 'translateX(5px)';
+                });
+                link.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = 'transparent';
+                    this.style.color = '#cbd5e0';
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+
+            // 项目卡片hover
+            const projectCards = document.querySelectorAll('div[style*="background: rgba(255, 255, 255, 0.04)"]');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = 'rgba(0, 191, 255, 0.08)';
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 30px rgba(0, 191, 255, 0.1)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.04)';
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+
+    <!-- 移除所有导航栏相关脚本 -->
 </body>
 </html>
