@@ -100,21 +100,34 @@
         </div>
     </div>
 
-    <!-- 页脚（添加毛玻璃内联样式） -->
-    <footer class="blog-footer" style="
-        background: rgba(255, 255, 255, 0.5) !important;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        padding: 30px 0;
-        border-top: 1px solid #eee;
-        margin-top: 60px;
-    ">
-        <div class="container">
-            <p class="email-text">2585263682@qq.com</p>
-            <p class="copyright">© 2025 林笙的博客 | 保留所有权利</p>
-        </div>
-    </footer>
+    <!-- 页脚（修复邮箱对齐） -->
+<footer class="blog-footer" style="
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 30px 0;
+    border-top: 1px solid #eee;
+    margin-top: 60px;
+    text-align: center; /* 新增：让内容居中 */
+">
+    <div class="container">
+        <p class="email-text" style="
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            cursor: default;
+            letter-spacing: 0.5px;
+            margin: 0 auto; /* 新增：保证水平居中 */
+        ">2585263682@qq.com</p>
+        <p class="copyright" style="
+            color: #999;
+            font-size: 0.75em;
+            line-height: 1.5;
+            margin: 10px 0 0; /* 调整间距 */
+        ">© 2025 林笙的博客 | 保留所有权利</p>
+    </div>
+</footer>
 
     <!-- 引入脚本 -->
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
