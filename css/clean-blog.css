@@ -2,8 +2,9 @@ body {
   font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 16px;
-  color: #404040;
+  color: #333333; /* 深灰色文字，替代原来的 #404040 */
   overflow-x: hidden;
+  background-color: #f0f0f0; /* 全局浅灰背景，替代纯白 */
 }
 p {
   margin: 30px 0;
@@ -15,9 +16,9 @@ h4,
 h5,
 h6 {
   font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
-
   line-height: 1.1;
   font-weight: 800;
+  color: #222222; /* 标题用更深的灰色 */
 }
 h1 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -26,11 +27,11 @@ h4 {
   font-size: 18px;
 }
 a {
-  color: #404040;
+  color: #333333; /* 链接默认深灰色 */
 }
 a:hover,
 a:focus {
-  color: #0085a1;
+  color: #666666; /* 链接 hover 浅灰色 */
 }
 a img:hover,
 a img:focus {
@@ -40,7 +41,7 @@ article {
   overflow-x: hidden;
 }
 blockquote {
-  color: #808080;
+  color: #777777; /* 引用文字灰色 */
   font-style: italic;
   font-size: 0.95em;
   margin: 20px 0 20px;
@@ -52,21 +53,21 @@ blockquote p {
   select {
     -webkit-appearance: none;
     margin-top: 15px;
-    color: #44bff2;
-    border-color: #44bff2;
+    color: #666666; /* 下拉框文字灰黑 */
+    border-color: #666666; /* 下拉框边框灰黑 */
     padding: 0em 0.4em;
-    background: white;
+    background: #f0f0f0; /* 下拉框背景浅灰 */
   }
 }
 .table th,
 .table td {
-  border: 1px solid #eee !important;
+  border: 1px solid #ddd !important; /* 表格边框浅灰 */
 }
 hr.small {
   max-width: 100px;
   margin: 15px auto;
   border-width: 4px;
-  border-color: white;
+  border-color: #666666; /* 分割线灰色 */
 }
 @media screen and (max-width: 500px) {
   pre code {
@@ -75,11 +76,11 @@ hr.small {
   }
 }
 .post-container a {
-  color: #2B4180;
+  color: #444444; /* 文章内链接深灰 */
 }
 .post-container a:hover,
 .post-container a:focus {
-  color: #6bb4bf;
+  color: #777777; /* 文章内链接 hover 浅灰 */
 }
 .post-container ul,
 .post-container ol {
@@ -105,7 +106,7 @@ hr.small {
   margin-top: 20px;
 }
 .navbar-custom {
-  background: white;
+  background: #333333; /* 导航栏默认深灰背景 */
   position: absolute;
   top: 0;
   left: 0;
@@ -116,36 +117,38 @@ hr.small {
 }
 .navbar-custom .navbar-brand {
   font-weight: 800;
+  color: #f0f0f0; /* 导航栏标题浅灰 */
 }
 .navbar-custom .nav li a {
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
+  color: #f0f0f0; /* 导航栏链接浅灰 */
 }
 @media only screen and (min-width: 768px) {
   .navbar-custom {
-    background: transparent;
-    border-bottom: 1px solid transparent;
+    background: rgba(51,51,51,0.8); /* 大屏导航栏半透明深灰 */
+    border-bottom: 1px solid #555555;
   }
   .navbar-custom body {
     font-size: 20px;
   }
   .navbar-custom .navbar-brand {
-    color: white;
+    color: #f0f0f0;
     padding: 20px;
   }
   .navbar-custom .navbar-brand:hover,
   .navbar-custom .navbar-brand:focus {
-    color: rgba(255, 255, 255, 0.8);
+    color: #ffffff; /* 导航栏标题 hover 纯白 */
   }
   .navbar-custom .nav li a {
-    color: white;
+    color: #f0f0f0;
     padding: 20px;
   }
   .navbar-custom .nav li a:hover,
   .navbar-custom .nav li a:focus {
-    color: rgba(255, 255, 255, 0.8);
+    color: #ffffff; /* 导航栏链接 hover 纯白 */
   }
 }
 @media only screen and (min-width: 1170px) {
@@ -153,7 +156,6 @@ hr.small {
     -webkit-transition: background-color 0.3s;
     -moz-transition: background-color 0.3s;
     transition: background-color 0.3s;
-    /* Force Hardware Acceleration in WebKit */
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -163,31 +165,29 @@ hr.small {
     backface-visibility: hidden;
   }
   .navbar-custom.is-fixed {
-    /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
     top: -61px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid #f2f2f2;
+    background-color: rgba(51,51,51,0.9); /* 固定导航栏深灰背景 */
+    border-bottom: 1px solid #666666;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
   }
   .navbar-custom.is-fixed .navbar-brand {
-    color: #404040;
+    color: #f0f0f0;
   }
   .navbar-custom.is-fixed .navbar-brand:hover,
   .navbar-custom.is-fixed .navbar-brand:focus {
-    color: #0085a1;
+    color: #ffffff;
   }
   .navbar-custom.is-fixed .nav li a {
-    color: #404040;
+    color: #f0f0f0;
   }
   .navbar-custom.is-fixed .nav li a:hover,
   .navbar-custom.is-fixed .nav li a:focus {
-    color: #0085a1;
+    color: #ffffff;
   }
   .navbar-custom.is-visible {
-    /* if the user changes the scrolling direction, we show the header */
     -webkit-transform: translate3d(0, 100%, 0);
     -moz-transform: translate3d(0, 100%, 0);
     -ms-transform: translate3d(0, 100%, 0);
@@ -197,26 +197,24 @@ hr.small {
 }
 .intro-header {
   background: no-repeat center center;
-  background-color: #808080;
+  background-color: #444444; /* 封面深灰背景，替代原来的 #808080 */
   background-attachment: scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
   margin-bottom: 0px;
-  /* 0 on mobile, changed the setting*/
 }
 @media only screen and (min-width: 768px) {
   .intro-header {
     margin-bottom: 20px;
-    /* response on desktop */
   }
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {
   padding: 100px 0 50px;
-  color: white;
+  color: #f0f0f0; /* 封面文字浅灰 */
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading,
@@ -233,6 +231,7 @@ hr.small {
 .intro-header .page-heading h1 {
   margin-top: 0;
   font-size: 50px;
+  color: #ffffff; /* 封面标题纯白 */
 }
 .intro-header .site-heading .subheading,
 .intro-header .page-heading .subheading {
@@ -243,6 +242,7 @@ hr.small {
   display: block;
   font-weight: 300;
   margin: 10px 0 0;
+  color: #e0e0e0; /* 封面副标题浅灰 */
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading h1,
@@ -252,11 +252,13 @@ hr.small {
 }
 .intro-header .post-heading h1 {
   font-size: 27px;
+  color: #ffffff;
 }
 .intro-header .post-heading .subheading,
 .intro-header .post-heading .meta {
   line-height: 1.1;
   display: block;
+  color: #e0e0e0;
 }
 .intro-header .post-heading .subheading {
   font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
@@ -273,7 +275,7 @@ hr.small {
   font-size: 17px;
 }
 .intro-header .post-heading .meta a {
-  color: white;
+  color: #ffffff;
 }
 @media only screen and (min-width: 768px) {
   .intro-header .post-heading h1 {
@@ -287,39 +289,41 @@ hr.small {
   }
 }
 .post-preview > a {
-  color: #404040;
+  color: #333333;
 }
 .post-preview > a:hover,
 .post-preview > a:focus {
   text-decoration: none;
-  color: #0666C5;
+  color: #666666;
 }
 .post-preview > a > .post-title {
   font-size: 21px;
   line-height: 1.3;
   margin-top: 30px;
   margin-bottom: 8px;
+  color: #222222;
 }
 .post-preview > a > .post-subtitle {
   font-size: 15px;
   margin: 0;
   font-weight: 300;
   margin-bottom: 10px;
+  color: #444444;
 }
 .post-preview > .post-meta {
   font-family: 'Lora', 'Times New Roman', serif;
-  color: #808080;
+  color: #777777;
   font-size: 16px;
   font-style: italic;
   margin-top: 0;
 }
 .post-preview > .post-meta > a {
   text-decoration: none;
-  color: #404040;
+  color: #333333;
 }
 .post-preview > .post-meta > a:hover,
 .post-preview > .post-meta > a:focus {
-  color: #2B4180;
+  color: #666666;
   text-decoration: underline;
 }
 @media only screen and (min-width: 768px) {
@@ -338,10 +342,10 @@ hr.small {
 .post-content-preview {
   font-size: 13px;
   font-style: normal;
-  color: #a3a3a3;
+  color: #888888;
 }
 .post-content-preview:hover {
-  color: #46A5ED;
+  color: #666666;
 }
 @media only screen and (min-width: 768px) {
   .post-content-preview {
@@ -352,6 +356,7 @@ hr.small {
   font-size: 36px;
   margin-top: 60px;
   font-weight: 700;
+  color: #222222;
 }
 .caption {
   text-align: center;
@@ -362,10 +367,13 @@ hr.small {
   display: block;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+  color: #777777;
 }
 footer {
   font-size: 20px;
   padding: 50px 0 65px;
+  background-color: #333333; /* 页脚深灰背景 */
+  color: #f0f0f0; /* 页脚文字浅灰 */
 }
 footer .list-inline {
   margin: 0;
@@ -375,20 +383,21 @@ footer .copyright {
   font-size: 14px;
   text-align: center;
   margin-bottom: 0;
+  color: #e0e0e0;
 }
 footer .copyright a {
-  color: #93e1de;
+  color: #cccccc; /* 页脚链接浅灰 */
 }
 footer .copyright a:hover,
 footer .copyright a:focus {
-  color: #44bff2;
+  color: #ffffff; /* 页脚链接 hover 纯白 */
 }
 .floating-label-form-group {
   font-size: 14px;
   position: relative;
   margin-bottom: 0;
   padding-bottom: 0.5em;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #dddddd;
 }
 .floating-label-form-group input,
 .floating-label-form-group textarea {
@@ -402,6 +411,7 @@ footer .copyright a:focus {
   background: none;
   box-shadow: none !important;
   resize: none;
+  color: #333333;
 }
 .floating-label-form-group label {
   display: block;
@@ -418,6 +428,7 @@ footer .copyright a:focus {
   -moz-transition: top 0.3s ease,opacity 0.3s ease;
   -ms-transition: top 0.3s ease,opacity 0.3s ease;
   transition: top 0.3s ease,opacity 0.3s ease;
+  color: #666666;
 }
 .floating-label-form-group::not(:first-child) {
   padding-left: 14px;
@@ -428,7 +439,7 @@ footer .copyright a:focus {
   opacity: 1;
 }
 .floating-label-form-group-with-focus label {
-  color: #2B4180;
+  color: #555555;
 }
 form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
@@ -442,6 +453,9 @@ form .row:first-child .floating-label-form-group {
   letter-spacing: 1px;
   border-radius: 0;
   padding: 15px 25px;
+  background-color: #555555; /* 按钮深灰 */
+  color: #ffffff; /* 按钮文字白 */
+  border: 1px solid #555555;
 }
 .btn-lg {
   font-size: 16px;
@@ -449,8 +463,8 @@ form .row:first-child .floating-label-form-group {
 }
 .btn-default:hover,
 .btn-default:focus {
-  background-color: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: #666666; /* 按钮 hover 浅灰 */
+  border: 1px solid #666666;
   color: white;
 }
 .pager {
@@ -465,8 +479,10 @@ form .row:first-child .floating-label-form-group {
   font-weight: 800;
   letter-spacing: 1px;
   padding: 10px 5px;
-  background-color: white;
+  background-color: #f0f0f0; /* 分页背景浅灰 */
   border-radius: 0;
+  color: #333333;
+  border: 1px solid #dddddd;
 }
 @media only screen and (min-width: 768px) {
   .pager li > a,
@@ -476,31 +492,31 @@ form .row:first-child .floating-label-form-group {
   }
 }
 .pager li > a {
-  color: #404040;
-}c
+  color: #333333;
+}
 .pager li > a:hover,
 .pager li > a:focus {
   color: white;
-  background-color: #00c9d7;
-  border: 1px solid #00c9d7;
+  background-color: #555555; /* 分页 hover 深灰 */
+  border: 1px solid #555555;
 }
 .pager .disabled > a,
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
 .pager .disabled > span {
-  color: #808080;
-  background-color: #404040;
+  color: #888888;
+  background-color: #dddddd; /* 禁用分页浅灰 */
   cursor: not-allowed;
 }
 ::-moz-selection {
   color: white;
   text-shadow: none;
-  background: #00c9d7;
+  background: #666666; /* 选中背景灰黑 */
 }
 ::selection {
   color: white;
   text-shadow: none;
-  background: #00c9d7;
+  background: #666666;
 }
 img::selection {
   color: white;
@@ -511,9 +527,8 @@ img::-moz-selection {
   background: transparent;
 }
 body {
-  webkit-tap-highlight-color: #00c9d7;
+  webkit-tap-highlight-color: #666666;
 }
-
 
 /* Optimize UserExperience */
 .navbar-default .navbar-toggle:focus,
@@ -521,6 +536,5 @@ body {
   background-color: inherit;
 }
 .navbar-default .navbar-toggle:active {
-  background-color: #ddd;
+  background-color: #777777; /* 导航按钮点击灰 */
 }
-
