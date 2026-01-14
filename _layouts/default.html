@@ -1,20 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="林笙的个人博客">
+    <title>{% if page.title %}{{ page.title }} - 林笙{% else %}林笙的博客{% endif %}</title>
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
+    <!-- 引入外部资源 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/clean-blog.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:400,700&family=Open+Sans:400,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">林笙</span>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ site.baseurl }}/">首页</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-{% include head.html %}
+    <!-- 主体内容 -->
+    <div class="container main-container">
+        <div class="row">
+            <!-- 左侧博客内容区 -->
+            <div class="col-md-8">
+                {{ content }}
+            </div>
+            <!-- 右侧侧边栏 -->
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <!-- 主要项目分类 -->
+                    <div class="sidebar-module">
+                        <h4 class="sidebar-title">主要项目</h4>
+                        <ul class="social-links">
+                            <li>
+                                <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-link">
+                                    <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" class="social-icon">
+                                    <span>Steam 主页</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-link">
+                                    <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" class="social-icon">
+                                    <span>抖音 主页</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://space.bilibili.com/532722347?spm_id_from=333.1007.0.0" target="_blank" class="social-link">
+                                    <img src="{{ site.baseurl }}/img/icons/bilibili.png" alt="B站" class="social-icon">
+                                    <span>B站 主页</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- 页脚 -->
+    <footer class="blog-footer">
+        <div class="container">
+            <p class="email-text">2585263682@qq.com</p>
+            <p class="copyright">© 2025 林笙的博客 | 保留所有权利</p>
+        </div>
+    </footer>
 
-
-
-
-<body ontouchstart="">
-
-    {% include nav.html %}
-
-    {{ content }}
-
-    {% include footer.html %}
-
+    <!-- 引入脚本 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{ site.baseurl }}/js/clean-blog.js"></script>
 </body>
-
 </html>
