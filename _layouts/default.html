@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 核心样式：恢复动态渐变背景+整体布局 -->
+    <!-- 核心样式：动态渐变背景+整体布局 -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -38,7 +38,7 @@
         }
 
         a { text-decoration: none !important; }
-        /* 整体容器：恢复左右布局 */
+        /* 整体容器：确保左右是一个整体，滚动不分离 */
         .main-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -47,7 +47,7 @@
             gap: 30px;
             align-items: flex-start;
         }
-        /* 通用卡片样式：恢复玻璃效果 */
+        /* 通用玻璃卡片样式 */
         .glass-card {
             background: rgba(255, 255, 255, 0.6) !important;
             backdrop-filter: blur(12px);
@@ -57,7 +57,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             color: #12141a;
-            padding: 45px 35px;
         }
         /* 卡片hover效果 */
         .glass-card:hover {
@@ -76,14 +75,15 @@
     </style>
 </head>
 <body>
-    <!-- 核心容器：恢复左右整体布局 -->
+    <!-- 核心容器：左右整体布局 -->
     <div class="main-wrapper">
-        <!-- 左侧个人信息区（恢复完整样式） -->
+        <!-- 左侧个人信息区 -->
         <div style="width: 35%; min-width: 300px;">
             <div class="glass-card" style="
                 height: fit-content;
                 position: sticky;
                 top: 60px;
+                padding: 45px 35px;
             ">
                 <!-- 头像模块 -->
                 <div style="text-align: center; margin-bottom: 35px;">
@@ -130,10 +130,10 @@
                         align-items: center;
                         gap: 12px;
                     ">
-                        <<i class="fa fa-envelope-o" style="
+                        <i class="fa fa-envelope-o" style="
                             color: #ff6b6b;
                             font-size: 1.2em;
-                        "></</i>
+                        "></i>
                         2585263682@qq.com
                     </p>
                 </div>
@@ -162,10 +162,14 @@
             </div>
         </div>
 
-        <!-- 右侧链接区（恢复小卡片+完整样式） -->
+        <!-- 右侧链接区（小卡片） -->
         <div style="width: 65%; display: flex; flex-direction: column; gap: 20px;">
             <!-- 抖音小卡片 -->
-            <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="glass-card" style="width: fit-content;">
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="glass-card" style="
+                padding: 25px 30px;
+                width: 100%;
+                max-width: 300px;
+            ">
                 <div class="social-link">
                     <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="width: 22px; height: 22px;">
                     <span>抖音 主页</span>
@@ -173,7 +177,11 @@
             </a>
 
             <!-- 苹果中国小卡片 -->
-            <a href="https://www.apple.com/cn/" target="_blank" class="glass-card" style="width: fit-content;">
+            <a href="https://www.apple.com/cn/" target="_blank" class="glass-card" style="
+                padding: 25px 30px;
+                width: 100%;
+                max-width: 300px;
+            ">
                 <div class="social-link">
                     <img src="{{ site.baseurl }}/img/icons/apple.png" alt="苹果中国" style="width: 22px; height: 22px;">
                     <span>苹果中国官网</span>
