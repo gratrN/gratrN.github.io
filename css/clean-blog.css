@@ -140,12 +140,18 @@ body {
     border-radius: 4px; /* 轻微圆角，匹配参考站图标样式 */
 }
 
-/* 页脚样式（精准复刻参考站的邮箱和版权样式） */
+/* 页脚样式 */
 .blog-footer {
-    background-color: rgba(255, 255, 255, 0.98);
-    padding: 40px 0 20px;
-    border-top: 1px solid #f1f1f1;
-    margin-top: 60px;
+    /* 毛玻璃核心样式 */
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    
+    /* 原有样式保留 */
+    padding: 30px 0;
+    border-top: 1px solid #eee;
+}
 }
 
 .email-text {
