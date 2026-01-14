@@ -10,100 +10,130 @@
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
     <!-- 引入外部资源 -->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/css/clean-blog.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 星空背景依赖 -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <!-- 基础样式重置 -->
+    <!-- 核心样式：彩虹渐变背景+整体布局 -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background: #12141a !important; 
+            /* 彩虹渐变背景（鲜艳不花哨，固定不滚动） */
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 20%, #48dbfb 40%, #1dd1a1 60%, #5f27cd 80%, #ff6b6b 100%) !important;
+            background-attachment: fixed; /* 背景固定，滚动不位移 */
+            background-size: 200% 200%; /* 渐变更自然 */
+            animation: gradientFlow 15s ease infinite; /* 轻微流动动画 */
             color: #fff;
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+        }
+        /* 渐变流动动画（可选，增加质感） */
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         a { text-decoration: none !important; }
+        /* 整体容器：左右模块为一个整体，滚动不分离 */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        /* 通用卡片样式：透明度0.6，基础玻璃效果 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        /* 卡片hover效果：匹配目标页玻璃质感 */
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.75) !important;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        /* 社交链接hover效果 */
+        .social-link {
+            display: flex;
+            align-items: center;
+            color: #222;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: #ff6b6b;
+            transform: translateX(5px);
+        }
     </style>
 </head>
 <body>
-    <!-- 星空背景容器（和参考页一致） -->
-    <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
-
-    <!-- 核心容器：和参考页完全一致的宽高/间距 -->
-    <div style="
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 60px 40px;
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
-    ">
-        <!-- 左侧个人信息区：宽度占比、间距、样式1:1匹配参考页 -->
-        <div style="
-            width: 35%;
-            min-width: 300px;
-        ">
-            <div style="
-                background: rgba(18, 20, 26, 0.85);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.12);
-                border-radius: 16px;
+    <!-- 核心容器：左右整体，滚动不分离 -->
+    <div class="main-wrapper">
+        <!-- 左侧个人信息区（仅Steam+抖音，匹配目标页排版） -->
+        <div style="width: 35%; min-width: 300px;">
+            <div class="glass-card" style="
                 padding: 45px 35px;
-                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
                 height: fit-content;
-                position: sticky;
+                position: sticky; /* 滚动时固定，和右侧保持整体 */
                 top: 60px;
+                color: #12141a;
             ">
-                <!-- 头像模块（和参考页位置/大小一致） -->
+                <!-- 头像模块 -->
                 <div style="text-align: center; margin-bottom: 35px;">
                     <img src="{{ site.baseurl }}/img/avatar.png" alt="林笙" style="
                         width: 130px;
                         height: 130px;
                         border-radius: 50%;
                         object-fit: cover;
-                        border: 3px solid rgba(0, 191, 255, 0.25);
-                        box-shadow: 0 0 25px rgba(0, 191, 255, 0.2);
+                        border: 3px solid rgba(255, 255, 255, 0.9);
+                        box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
                     ">
                 </div>
 
-                <!-- 姓名/身份（参考页字体大小/间距） -->
+                <!-- 姓名/身份 -->
                 <h1 style="
                     font-size: 2em;
                     font-weight: 700;
                     margin-bottom: 10px;
-                    color: #fff;
+                    color: #12141a;
                     text-align: center;
                     letter-spacing: 0.5px;
                 ">林笙</h1>
                 <p style="
-                    color: #a0aec0;
+                    color: #333;
                     font-size: 1.05em;
                     margin-bottom: 30px;
                     text-align: center;
                 ">兴趣分享 / 游戏 / 创作</p>
 
-                <!-- 分隔线（参考页样式） -->
+                <!-- 分隔线 -->
                 <div style="
                     height: 1px;
-                    background: rgba(255, 255, 255, 0.1);
+                    background: rgba(0, 0, 0, 0.1);
                     margin: 30px 0;
                 "></div>
 
-                <!-- 联系方式（参考页布局） -->
+                <!-- 联系方式 -->
                 <div style="margin-bottom: 30px;">
                     <p style="
-                        color: #cbd5e0;
+                        color: #222;
                         font-size: 0.95em;
                         margin-bottom: 15px;
                         display: flex;
                         align-items: center;
                     ">
                         <i class="fa fa-envelope-o" style="
-                            color: #00bfff;
+                            color: #ff6b6b;
                             font-size: 1.2em;
                             margin-right: 12px;
                             width: 20px;
@@ -113,26 +143,19 @@
                     </p>
                 </div>
 
-                <!-- 社交链接标题（参考页样式） -->
+                <!-- 社交链接标题 -->
                 <h3 style="
                     font-size: 1.15em;
                     font-weight: 600;
                     margin-bottom: 20px;
-                    color: #e2e8f0;
+                    color: #12141a;
                     padding-left: 5px;
                 ">社交平台</h3>
 
-                <!-- 社交链接列表（1:1匹配参考页布局） -->
+                <!-- 仅保留Steam+抖音（匹配目标页排版） -->
                 <ul style="list-style: none; padding: 0;">
                     <li style="margin-bottom: 12px;">
-                        <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" style="
-                            display: flex;
-                            align-items: center;
-                            color: #cbd5e0;
-                            padding: 10px 15px;
-                            border-radius: 8px;
-                            transition: all 0.3s ease;
-                        ">
+                        <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-link">
                             <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="
                                 width: 22px;
                                 height: 22px;
@@ -141,15 +164,8 @@
                             <span>Steam 主页</span>
                         </a>
                     </li>
-                    <li style="margin-bottom: 12px;">
-                        <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" style="
-                            display: flex;
-                            align-items: center;
-                            color: #cbd5e0;
-                            padding: 10px 15px;
-                            border-radius: 8px;
-                            transition: all 0.3s ease;
-                        ">
+                    <li>
+                        <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-link">
                             <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="
                                 width: 22px;
                                 height: 22px;
@@ -158,209 +174,63 @@
                             <span>抖音 主页</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="https://space.bilibili.com/532722347?spm_id_from=333.1007.0.0" target="_blank" style="
-                            display: flex;
-                            align-items: center;
-                            color: #cbd5e0;
-                            padding: 10px 15px;
-                            border-radius: 8px;
-                            transition: all 0.3s ease;
-                        ">
-                            <img src="{{ site.baseurl }}/img/icons/bilibili.png" alt="B站" style="
-                                width: 22px;
-                                height: 22px;
-                                margin-right: 12px;
-                            ">
-                            <span>B站 主页</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
 
-        <!-- 右侧项目展示区：宽度占比1:1匹配参考页 -->
-        <div style="
-            width: 65%;
-        ">
-            <div style="
-                background: rgba(18, 20, 26, 0.85);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.12);
-                border-radius: 16px;
+        <!-- 右侧链接区（仅抖音+苹果中国，单张小卡片，无大框） -->
+        <div style="width: 65%;">
+            <!-- 单个小卡片（匹配目标页样式，透明度0.6） -->
+            <div class="glass-card" style="
                 padding: 45px 35px;
-                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-                margin-bottom: 20px;
+                color: #12141a;
+                margin-bottom: 40px;
             ">
-                <!-- 主要项目标题（参考页样式） -->
                 <h2 style="
                     font-size: 1.5em;
                     font-weight: 600;
                     margin-bottom: 30px;
-                    color: #e2e8f0;
+                    color: #12141a;
                     padding-bottom: 15px;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                ">主要项目</h2>
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                ">常用链接</h2>
 
-                <!-- 项目卡片列表（1:1匹配参考页间距/样式） -->
-                <div style="display: flex; flex-direction: column; gap: 20px;">
-                    <!-- 项目1 -->
-                    <div style="
-                        background: rgba(255, 255, 255, 0.04);
-                        border-radius: 12px;
-                        padding: 25px;
-                        transition: all 0.3s ease;
-                    ">
-                        <h3 style="
-                            font-size: 1.25em;
-                            font-weight: 600;
-                            margin-bottom: 12px;
-                            color: #00bfff;
-                        ">个人博客</h3>
-                        <p style="
-                            color: #a0aec0;
-                            font-size: 0.95em;
-                            line-height: 1.7;
+                <!-- 抖音+苹果中国（单张小卡片内的链接） -->
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-link">
+                        <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="
+                            width: 22px;
+                            height: 22px;
+                            margin-right: 12px;
                         ">
-                            基于GitHub Pages搭建的个人兴趣分享主页，采用深色星空背景+毛玻璃设计，适配全终端，整合社交平台链接与个人作品展示。
-                        </p>
-                    </div>
-
-                    <!-- 项目2 -->
-                    <div style="
-                        background: rgba(255, 255, 255, 0.04);
-                        border-radius: 12px;
-                        padding: 25px;
-                        transition: all 0.3s ease;
-                    ">
-                        <h3 style="
-                            font-size: 1.25em;
-                            font-weight: 600;
-                            margin-bottom: 12px;
-                            color: #00bfff;
-                        ">游戏分享</h3>
-                        <p style="
-                            color: #a0aec0;
-                            font-size: 0.95em;
-                            line-height: 1.7;
+                        <span>抖音 主页</span>
+                    </a>
+                    <a href="https://www.apple.com/cn/" target="_blank" class="social-link">
+                        <img src="{{ site.baseurl }}/img/icons/apple.png" alt="苹果中国" style="
+                            width: 22px;
+                            height: 22px;
+                            margin-right: 12px;
                         ">
-                            Steam平台游戏体验与攻略分享，涵盖单机、联机游戏测评，专注于独立游戏与多人协作类游戏的玩法解析。
-                        </p>
-                    </div>
-
-                    <!-- 项目3 -->
-                    <div style="
-                        background: rgba(255, 255, 255, 0.04);
-                        border-radius: 12px;
-                        padding: 25px;
-                        transition: all 0.3s ease;
-                    ">
-                        <h3 style="
-                            font-size: 1.25em;
-                            font-weight: 600;
-                            margin-bottom: 12px;
-                            color: #00bfff;
-                        ">短视频创作</h3>
-                        <p style="
-                            color: #a0aec0;
-                            font-size: 0.95em;
-                            line-height: 1.7;
-                        ">
-                            抖音/B站短视频内容创作，聚焦游戏剪辑、日常趣味分享，通过轻量化的视频形式传递兴趣内容。
-                        </p>
-                    </div>
+                        <span>https://www.apple.com.cn/store?afid=p240%7Cuc~p870_kw1&cid=aos-cn-kwbi-brand-bz</span>
+                    </a>
                 </div>
             </div>
 
-            <!-- 页脚版权（参考页底部位置） -->
+            <!-- 页脚版权 -->
             <div style="
                 text-align: center;
-                margin-top: 40px;
-                color: #718096;
+                color: #fff;
                 font-size: 0.85em;
                 letter-spacing: 0.3px;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
             ">
                 © 2025 林笙的个人主页 | 保留所有权利
             </div>
         </div>
     </div>
 
-    <!-- 星空背景脚本（和参考页粒子效果一致） -->
-    <script>
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 100, density: { enable: true, value_area: 800 } },
-                color: { value: '#00bfff' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.6, random: true },
-                size: { value: 2, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 180,
-                    color: '#00bfff',
-                    opacity: 0.15,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 0.8,
-                    direction: 'none',
-                    random: true,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: { enable: true, mode: 'grab' },
-                    onclick: { enable: true, mode: 'push' },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 150, line_linked: { opacity: 0.3 } },
-                    push: { particles_nb: 4 }
-                }
-            },
-            retina_detect: true
-        });
-
-        // 社交链接/项目卡片hover效果（参考页交互）
-        document.addEventListener('DOMContentLoaded', function() {
-            // 社交链接hover
-            const socialLinks = document.querySelectorAll('ul li a');
-            socialLinks.forEach(link => {
-                link.addEventListener('mouseenter', function() {
-                    this.style.backgroundColor = 'rgba(0, 191, 255, 0.1)';
-                    this.style.color = '#00bfff';
-                    this.style.transform = 'translateX(5px)';
-                });
-                link.addEventListener('mouseleave', function() {
-                    this.style.backgroundColor = 'transparent';
-                    this.style.color = '#cbd5e0';
-                    this.style.transform = 'translateX(0)';
-                });
-            });
-
-            // 项目卡片hover
-            const projectCards = document.querySelectorAll('div[style*="background: rgba(255, 255, 255, 0.04)"]');
-            projectCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.backgroundColor = 'rgba(0, 191, 255, 0.08)';
-                    this.style.transform = 'translateY(-5px)';
-                    this.style.boxShadow = '0 10px 30px rgba(0, 191, 255, 0.1)';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.04)';
-                    this.style.transform = 'translateY(0)';
-                    this.style.boxShadow = 'none';
-                });
-            });
-        });
-    </script>
-
-    <!-- 移除所有导航栏相关脚本 -->
+    <!-- 移除多余脚本，仅保留基础适配 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
