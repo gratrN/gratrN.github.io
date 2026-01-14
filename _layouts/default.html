@@ -12,27 +12,32 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 核心样式：彩虹渐变背景+整体布局 -->
+    <!-- 核心样式：动态彩虹渐变背景+整体布局 -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            /* 彩虹渐变背景（鲜艳不花哨，固定不滚动） */
-            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 20%, #48dbfb 40%, #1dd1a1 60%, #5f27cd 80%, #ff6b6b 100%) !important;
+            /* 动态彩虹渐变背景核心样式 */
+            background: linear-gradient(135deg, 
+                #ff6b6b 0%, #feca57 20%, #48dbfb 40%, 
+                #1dd1a1 60%, #5f27cd 80%, #ff6b6b 100%);
             background-attachment: fixed; /* 背景固定，滚动不位移 */
-            background-size: 200% 200%; /* 渐变更自然 */
-            animation: gradientFlow 15s ease infinite; /* 轻微流动动画 */
+            background-size: 400% 400%; /* 扩大渐变画布，支持流动动画 */
+            /* 动态流动动画：15秒循环，匀速且平滑 */
+            animation: rainbowFlow 15s ease-in-out infinite;
             color: #fff;
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
         }
-        /* 渐变流动动画（可选，增加质感） */
-        @keyframes gradientFlow {
+
+        /* 动态渐变动画关键帧：色彩缓慢流动 */
+        @keyframes rainbowFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
         a { text-decoration: none !important; }
         /* 整体容器：左右模块为一个整体，滚动不分离 */
         .main-wrapper {
@@ -211,7 +216,7 @@
                             height: 22px;
                             margin-right: 12px;
                         ">
-                        <span>apple</span>
+                        <span>苹果中国官网</span>
                     </a>
                 </div>
             </div>
