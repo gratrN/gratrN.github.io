@@ -61,13 +61,13 @@
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
             transform: translateY(-2px);
         }
-        /* 左侧社交链接小框（目标页同款，间隔减半） */
+        /* 左侧社交链接小框（间隔减半） */
         .social-box {
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 14px 0;
-            margin: 5px 0; /* 间隔从10px改为5px，减半 */
+            margin: 5px 0; /* 间隔减半 */
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.03);
             transition: all 0.3s ease;
@@ -76,7 +76,7 @@
             background: rgba(255, 255, 255, 0.07);
             transform: translateY(-1px);
         }
-        /* 邮箱下方密集小点强调（替换原来的线） */
+        /* 邮箱下方密集小点强调 */
         .email-link {
             position: relative;
             color: #fff;
@@ -115,16 +115,16 @@
 <body>
     <!-- 核心容器 -->
     <div class="main-wrapper">
-        <!-- 左侧个人信息区（磨砂玻璃卡片，缩小内边距） -->
+        <!-- 左侧个人信息区（磨砂玻璃卡片） -->
         <div style="width: 30%; min-width: 280px;">
             <div class="glass-card" style="
                 height: fit-content;
                 position: sticky;
                 top: 60px;
-                padding: 35px 25px; /* 内边距从45px 35px缩小，减少上下间隔 */
+                padding: 35px 25px; /* 紧凑内边距 */
             ">
-                <!-- 头像模块（缩小底部间隔） -->
-                <div style="text-align: center; margin-bottom: 25px;"> <!-- 间隔从35px改25px -->
+                <!-- 头像模块 -->
+                <div style="text-align: center; margin-bottom: 25px;">
                     <img src="{{ site.baseurl }}/img/avatar.png" alt="林笙" style="
                         width: 130px;
                         height: 130px;
@@ -135,11 +135,11 @@
                     ">
                 </div>
 
-                <!-- 姓名/身份（缩小底部间隔） -->
+                <!-- 姓名/身份 -->
                 <h1 style="
                     font-size: 2em;
                     font-weight: 700;
-                    margin-bottom: 8px; /* 间隔从10px改8px */
+                    margin-bottom: 8px;
                     color: #fff;
                     text-align: center;
                     letter-spacing: 0.5px;
@@ -147,45 +147,30 @@
                 <p style="
                     color: rgba(255,255,255,0.7);
                     font-size: 1.05em;
-                    margin-bottom: 20px; /* 间隔从30px改20px */
+                    margin-bottom: 20px;
                     text-align: center;
                 ">CS2玩家 / 游戏分享</p>
 
-                <!-- 分隔线（缩小上下间隔） -->
+                <!-- 分隔线 -->
                 <div style="
                     height: 1px;
                     background: rgba(255, 255, 255, 0.1);
-                    margin: 20px 0; /* 间隔从30px改20px */
+                    margin: 20px 0;
                 "></div>
 
-                <!-- 联系方式（密集小点强调，缩小底部间隔） -->
-                <div style="margin-bottom: 20px; text-align: center;"> <!-- 间隔从30px改20px -->
-                    <p style="
-                        color: rgba(255,255,255,0.8);
-                        font-size: 0.95em;
-                        margin-bottom: 10px; /* 间隔从15px改10px */
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 12px;
-                    ">
-                        <i class="fa fa-envelope-o" style="
-                            color: rgba(255,255,255,0.6);
-                            font-size: 1.2em;
-                        "></i>
+                <!-- 邮箱模块（目标页同款样式） -->
+                <div style="margin-bottom: 20px; text-align: center;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                        <svg data-prefix="fas" data-icon="envelope" role="img" viewBox="0 0 512 512" aria-hidden="true" class="svg-inline--fa fa-envelope info-icon" style="color: rgba(255,255,255,0.6); font-size: 1.2em;">
+                            <path fill="currentColor" d="M48 64c-26.5 0-48 21.5-48 48 0 15.7 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48H48zM0 196l0 35.3 28.7 64 64l138.4 0c35.3 0 64-28.7 64-64l0-64-10-188-198.4 8c-34.1 25.6-81.1 25.6-115.2 0L0 196z"></path>
+                        </svg>
+                        <span style="color: rgba(255,255,255,0.8); font-size: 0.95em;">邮箱:</span>
                         <a href="mailto:2585263682@qq.com" class="email-link">2585263682@qq.com</a>
-                    </p>
+                    </div>
                 </div>
 
-                <!-- 社交平台（缩小标题底部间隔） -->
-                <h3 style="
-                    font-size: 1.15em;
-                    font-weight: 600;
-                    margin-bottom: 15px; /* 间隔从20px改15px */
-                    color: #fff;
-                    text-align: center;
-                ">社交平台</h3>
-                <div style="display: flex; flex-direction: column; gap: 5px;"> <!-- 间隔从10px改5px，减半 -->
+                <!-- 社交链接（无标题，间隔减半） -->
+                <div style="display: flex; flex-direction: column; gap: 5px;">
                     <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-box">
                         <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="width: 22px; height: 22px; margin-right: 8px;">
                         <span>Steam 主页</span>
@@ -198,18 +183,18 @@
             </div>
         </div>
 
-        <!-- 右侧内容区（修长卡片，缩小间隔） -->
-        <div style="width: 70%; display: flex; flex-direction: column; gap: 15px;"> <!-- 间隔从20px改15px -->
-            <!-- CS2游戏卡片（修长款，缩小内边距） -->
+        <!-- 右侧内容区（修长卡片） -->
+        <div style="width: 70%; display: flex; flex-direction: column; gap: 15px;">
+            <!-- CS2游戏卡片 -->
             <div class="glass-card" style="
-                padding: 20px 25px; /* 内边距从25px 30px改20px 25px */
+                padding: 20px 25px;
                 width: 100%;
                 max-width: 400px;
             ">
                 <h4 style="
                     font-size: 1.1em;
                     font-weight: 600;
-                    margin-bottom: 12px; /* 间隔从15px改12px */
+                    margin-bottom: 12px;
                     color: #fff;
                 ">🎮 最近在玩</h4>
                 <div style="display: flex; align-items: center; gap: 12px;">
@@ -221,9 +206,9 @@
                 </p>
             </div>
 
-            <!-- 微信赞赏码卡片（修长款，缩小内边距） -->
+            <!-- 微信赞赏码卡片 -->
             <div class="glass-card" style="
-                padding: 20px 25px; /* 内边距从25px 30px改20px 25px */
+                padding: 20px 25px;
                 width: 100%;
                 max-width: 400px;
                 text-align: center;
@@ -231,13 +216,13 @@
                 <h4 style="
                     font-size: 1.1em;
                     font-weight: 600;
-                    margin-bottom: 12px; /* 间隔从15px改12px */
+                    margin-bottom: 12px;
                     color: #fff;
                 ">✨ 自愿打赏支持</h4>
                 <p style="
                     font-size: 0.9em;
                     color: rgba(255,255,255,0.7);
-                    margin-bottom: 12px; /* 间隔从15px改12px */
+                    margin-bottom: 12px;
                 ">你的支持是我更新的动力 🥰</p>
                 <img src="{{ site.baseurl }}/img/wechat-appreciate.png" alt="微信赞赏码" style="
                     width: 160px;
@@ -258,9 +243,9 @@
                 color: rgba(255,255,255,0.5);
                 font-size: 0.85em;
                 letter-spacing: 0.3px;
-                margin-top: 15px; /* 间隔从20px改15px */
+                margin-top: 15px;
             ">
-                © 2025 林笙的个人主页 | LOVEYOUQAQ
+                © 2025 林笙的个人主页 | CS2玩家专属
             </div>
         </div>
     </div>
