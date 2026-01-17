@@ -292,7 +292,8 @@
 
             try {
                 // 1. 获取Steam个人状态
-                const summaryResponse = await fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${API_KEY}&steamids=${STEAM_ID}`);
+                const summaryResponse = await fetch(`https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${API_KEY}&steamids=${STEAM_ID}`);
+
                 const summaryData = await summaryResponse.json();
                 
                 if (summaryData.response.players && summaryData.response.players.length > 0) {
@@ -308,7 +309,7 @@
                 }
 
                 // 2. 获取CS2游戏时长
-                const gamesResponse = await fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${API_KEY}&steamid=${STEAM_ID}&include_appinfo=1&include_played_free_games=1`);
+                const gamesResponse = await fetch(`https://cors-anywhere.herokuapp.com/https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${API_KEY}&steamid=${STEAM_ID}&include_appinfo=1&include_played_free_games=1`);
                 const gamesData = await gamesResponse.json();
                 
                 if (gamesData.response && gamesData.response.games) {
