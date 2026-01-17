@@ -202,7 +202,7 @@
 
         <!-- 右侧内容区（修长卡片） -->
         <div style="width: 70%; display: flex; flex-direction: column; gap: 15px;">
-           <!-- CS2游戏卡片（静态彩虹字体版） -->
+          <!-- CS2游戏卡片（sRGB彩虹渐变版） -->
 <div class="glass-card" style="
     padding: 20px 25px;
     width: 100%;
@@ -213,12 +213,18 @@
         font-weight: 600;
         margin-bottom: 12px;
         color: #fff;
-    ">🎮 最近在玩</h4>
+    ">🎮 爱死了</h4>
     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
         <img src="{{ site.baseurl }}/img/icons/cs2.png" alt="CS2" style="width: 18px; height: 18px;">
-        <!-- 彩虹渐变字体 -->
+        <!-- sRGB标准彩虹渐变字体（静态无动画） -->
         <span style="
-            background: linear-gradient(90deg, #ff4655, #fcb69f, #64ffda, #7c3aed, #ff4655);
+            background: linear-gradient(90deg, 
+                color(srgb 1 0.275 0.333),  /* 红 - #ff4655 */
+                color(srgb 0.988 0.714 0.624), /* 橙 - #fcb69f */
+                color(srgb 0.392 1 0.855),  /* 青 - #64ffda */
+                color(srgb 0.486 0.227 0.929), /* 紫 - #7c3aed */
+                color(srgb 1 0.275 0.333)   /* 红（循环） */
+            );
             background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -228,7 +234,7 @@
         <span class="status-badge status-offline">离线</span>
     </div>
     <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 8px;">
-        来和我玩游戏QAQ
+        来和我玩csQAQ
     </p>
     <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 4px;">
         <i class="fa fa-clock-o" style="margin-right: 4px;"></i>
