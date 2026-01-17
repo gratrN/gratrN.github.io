@@ -5,24 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="林笙的个人主页">
-    <title>林笙 - 个人主页</title>
+    <title>林笙 - CS2玩家</title>
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
     <!-- 引入外部资源 -->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 核心样式：深色大跨度渐变+响应式布局 -->
+    <!-- 核心样式：黑色星空背景+磨砂玻璃卡片 -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            /* 深色大跨度渐变背景（紫黑→深蓝→墨紫，跨度大且高级） */
-            background: linear-gradient(135deg, 
-                #0d0221 0%, #151638 20%, #212670 40%, 
-                #151638 60%, #0d0221 80%, #0d0221 100%);
+            /* 黑色星空动态背景 */
+            background: #000 url('https://cdn.jsdelivr.net/gh/satnaing/astro@1.0.0/assets/starfield.svg') repeat top center;
             background-attachment: fixed;
-            background-size: 400% 400%;
-            animation: rainbowFlow 15s ease-in-out infinite;
+            animation: starMove 120s linear infinite;
             color: #fff;
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
@@ -31,14 +28,14 @@
             padding: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 40px);
         }
 
-        @keyframes rainbowFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* 星空流动动画 */
+        @keyframes starMove {
+            0% { background-position: 0 0; }
+            100% { background-position: -1000px 1000px; }
         }
 
         a { text-decoration: none !important; }
-        /* 整体容器：电脑左右分栏，手机上下堆叠 */
+        /* 整体容器：左右分栏 */
         .main-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -47,33 +44,55 @@
             gap: 30px;
             align-items: flex-start;
         }
-        /* 通用玻璃卡片样式（适配深色背景，文字更清晰） */
+        /* 磨砂玻璃卡片（目标页同款） */
         .glass-card {
-            background: rgba(255, 255, 255, 0.6) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            color: #12141a;
+            color: #fff;
         }
-        /* 卡片hover效果（深色背景下更明显） */
+        /* 卡片hover效果（目标页同款） */
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.75) !important;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
             transform: translateY(-2px);
         }
-        /* 社交链接样式 */
-        .social-link {
+        /* 左侧社交链接小框（目标页同款） */
+        .social-box {
             display: flex;
             align-items: center;
-            color: #222;
-            padding: 10px 0;
-            gap: 12px;
+            justify-content: center;
+            padding: 14px 0;
+            margin: 10px 0;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+        .social-box:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-1px);
+        }
+        /* 邮箱下划线（目标页同款） */
+        .email-link {
+            position: relative;
+            color: #fff;
+            padding-bottom: 4px;
+        }
+        .email-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
         }
 
-        /* 响应式核心规则 */
+        /* 响应式适配 */
         @media (max-width: 768px) {
             .main-wrapper {
                 flex-direction: column;
@@ -87,26 +106,13 @@
                 position: static !important;
                 top: unset !important;
             }
-            .main-wrapper a.glass-card {
-                max-width: 100% !important;
-            }
-            .main-wrapper img[alt="林笙"] {
-                width: 100px !important;
-                height: 100px !important;
-            }
-            .main-wrapper h1 {
-                font-size: 1.8em !important;
-            }
-            .main-wrapper h3 {
-                font-size: 1em !important;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- 核心容器：左右整体布局 -->
+    <!-- 核心容器 -->
     <div class="main-wrapper">
-        <!-- 左侧个人信息区（收窄为30%，更美观） -->
+        <!-- 左侧个人信息区（磨砂玻璃卡片） -->
         <div style="width: 30%; min-width: 280px;">
             <div class="glass-card" style="
                 height: fit-content;
@@ -121,8 +127,8 @@
                         height: 130px;
                         border-radius: 50%;
                         object-fit: cover;
-                        border: 3px solid rgba(255, 255, 255, 0.9);
-                        box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+                        border: 3px solid rgba(255, 255, 255, 0.2);
+                        box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
                     ">
                 </div>
 
@@ -131,139 +137,114 @@
                     font-size: 2em;
                     font-weight: 700;
                     margin-bottom: 10px;
-                    color: #12141a;
+                    color: #fff;
                     text-align: center;
                     letter-spacing: 0.5px;
                 ">林笙</h1>
                 <p style="
-                    color: #333;
+                    color: rgba(255,255,255,0.7);
                     font-size: 1.05em;
                     margin-bottom: 30px;
                     text-align: center;
-                ">CS2玩家 / 游戏分享 / 创作</p>
+                ">CS2玩家 / 游戏分享</p>
 
                 <!-- 分隔线 -->
                 <div style="
                     height: 1px;
-                    background: rgba(0, 0, 0, 0.1);
+                    background: rgba(255, 255, 255, 0.1);
                     margin: 30px 0;
                 "></div>
 
-                <!-- 联系方式 -->
-                <div style="margin-bottom: 30px;">
+                <!-- 联系方式（目标页同款下划线） -->
+                <div style="margin-bottom: 30px; text-align: center;">
                     <p style="
-                        color: #222;
+                        color: rgba(255,255,255,0.8);
                         font-size: 0.95em;
                         margin-bottom: 15px;
                         display: flex;
                         align-items: center;
+                        justify-content: center;
                         gap: 12px;
                     ">
                         <i class="fa fa-envelope-o" style="
-                            color: #212670;
+                            color: rgba(255,255,255,0.6);
                             font-size: 1.2em;
                         "></i>
-                        2585263682@qq.com
+                        <a href="mailto:2585263682@qq.com" class="email-link">2585263682@qq.com</a>
                     </p>
                 </div>
 
-                <!-- 社交平台（仅保留Steam+抖音，无重复） -->
+                <!-- 社交平台（目标页同款小框） -->
                 <h3 style="
                     font-size: 1.15em;
                     font-weight: 600;
                     margin-bottom: 20px;
-                    color: #12141a;
+                    color: #fff;
+                    text-align: center;
                 ">社交平台</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 12px;">
-                        <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-link">
-                            <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="width: 22px; height: 22px;">
-                            <span>Steam 主页</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-link">
-                            <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="width: 22px; height: 22px;">
-                            <span>抖音 主页</span>
-                        </a>
-                    </li>
-                </ul>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-box">
+                        <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="width: 22px; height: 22px; margin-right: 8px;">
+                        <span>Steam 主页</span>
+                    </a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-box">
+                        <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="width: 22px; height: 22px; margin-right: 8px;">
+                        <span>抖音 主页</span>
+                    </a>
+                </div>
             </div>
         </div>
 
-        <!-- 右侧内容区（70%宽度，填充CS2+个人简介+赞赏码，不空洞） -->
+        <!-- 右侧内容区（修长卡片） -->
         <div style="width: 70%; display: flex; flex-direction: column; gap: 20px;">
-            <!-- 1. 个人简介卡片（填充内容，不空洞） -->
+            <!-- CS2游戏卡片（修长款） -->
             <div class="glass-card" style="
                 padding: 25px 30px;
                 width: 100%;
-                max-width: 300px;
+                max-width: 400px;
             ">
                 <h4 style="
                     font-size: 1.1em;
                     font-weight: 600;
                     margin-bottom: 15px;
-                    color: #12141a;
-                ">📝 关于我</h4>
-                <p style="
-                    font-size: 0.9em;
-                    color: #333;
-                    line-height: 1.6;
-                ">
-                    专注CS2的休闲玩家，分享游戏日常、身法技巧和开箱趣事。<br>
-                    偶尔更新抖音游戏短视频，欢迎交流～
-                </p>
-            </div>
-
-            <!-- 2. CS2游戏卡片（替换成你想要的CS2） -->
-            <div class="glass-card" style="
-                padding: 25px 30px;
-                width: 100%;
-                max-width: 300px;
-            ">
-                <h4 style="
-                    font-size: 1.1em;
-                    font-weight: 600;
-                    margin-bottom: 15px;
-                    color: #12141a;
+                    color: #fff;
                 ">🎮 最近在玩</h4>
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
                     <img src="{{ site.baseurl }}/img/icons/cs2.png" alt="CS2" style="width: 22px; height: 22px;">
                     <span>《反恐精英 2 (CS2)》</span>
                 </div>
-                <p style="font-size: 0.85em; color: #666; margin-top: 8px;">
+                <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 8px;">
                     主打模式：竞技匹配 / 死斗练枪
                 </p>
             </div>
 
-            
-            <!-- 4. 微信赞赏码卡片（自愿打赏，丰富内容） -->
+            <!-- 微信赞赏码卡片（修长款） -->
             <div class="glass-card" style="
                 padding: 25px 30px;
                 width: 100%;
-                max-width: 300px;
+                max-width: 400px;
                 text-align: center;
             ">
                 <h4 style="
                     font-size: 1.1em;
                     font-weight: 600;
                     margin-bottom: 15px;
-                    color: #12141a;
+                    color: #fff;
                 ">✨ 自愿打赏支持</h4>
                 <p style="
                     font-size: 0.9em;
-                    color: #333;
+                    color: rgba(255,255,255,0.7);
                     margin-bottom: 15px;
                 ">你的支持是我更新的动力 🥰</p>
                 <img src="{{ site.baseurl }}/img/wechat-appreciate.png" alt="微信赞赏码" style="
                     width: 160px;
                     height: 160px;
                     border-radius: 8px;
-                    border: 2px solid rgba(255, 255, 255, 0.8);
+                    border: 2px solid rgba(255, 255, 255, 0.2);
                 ">
                 <p style="
                     font-size: 0.85em;
-                    color: #666;
+                    color: rgba(255,255,255,0.6);
                     margin-top: 10px;
                 ">扫码即可打赏，感谢你的支持</p>
             </div>
@@ -271,13 +252,12 @@
             <!-- 页脚版权 -->
             <div style="
                 text-align: center;
-                color: #fff;
+                color: rgba(255,255,255,0.5);
                 font-size: 0.85em;
                 letter-spacing: 0.3px;
-                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
                 margin-top: 20px;
             ">
-                © 2025 林笙的个人主页 | LOVEQAQ
+                © 2025 林笙的个人主页 | LOVE YOU QAQ
             </div>
         </div>
     </div>
