@@ -85,6 +85,32 @@
         .email-link::after {
             display: none; /* 完全去掉小点 */
         }
+        /* CS2 彩虹渐变字体（静态） */
+        .cs2-title {
+            background: linear-gradient(90deg, #ff4655, #fcb69f, #64ffda, #7c3aed, #ff4655);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        /* 状态标签样式 */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .status-online {
+            background: rgba(80, 200, 120, 0.2);
+            color: #50c878;
+        }
+        .status-offline {
+            background: rgba(150, 150, 150, 0.2);
+            color: #969696;
+        }
 
         /* 响应式适配 */
         @media (max-width: 768px) {
@@ -153,7 +179,7 @@
                 <div style="margin-bottom: 20px; text-align: center;">
                     <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
                         <svg data-prefix="fas" data-icon="envelope" role="img" viewBox="0 0 512 512" aria-hidden="true" class="svg-inline--fa fa-envelope info-icon" style="color: rgba(255,255,255,0.6); font-size: 0.7em; height: 14px;">
-                            <path fill="currentColor" d="M48 64c-26.5 0-48 21.5-48 48 0 15.1 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48L48 64zM0 196L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-188-198.4 148.8c-34.1 25.6-81.1 25.6-115.2 0L0 196z"></path>
+                            <path fill="currentColor" d="M48 64c-26.5 0-48 21.5-48 48 0 15.7 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48H48zM0 196l0 35.3 28.7 64 64l138.4 0c35.3 0 64-28.7 64-64l0-64-10-188-198.4 8c-34.1 25.6-81.1 25.6-115.2 0L0 196z"></path>
                         </svg>
                         <span style="color: rgba(255,255,255,0.8); font-size: 0.8em;">邮箱:</span>
                         <a href="mailto:2585263682@qq.com" class="email-link" style="font-size: 0.8em;">2585263682@qq.com</a>
@@ -176,7 +202,7 @@
 
         <!-- 右侧内容区（修长卡片） -->
         <div style="width: 70%; display: flex; flex-direction: column; gap: 15px;">
-            <!-- CS2游戏卡片 -->
+            <!-- CS2游戏卡片（炫酷升级+真实Steam数据） -->
             <div class="glass-card" style="
                 padding: 20px 25px;
                 width: 100%;
@@ -188,12 +214,17 @@
                     margin-bottom: 12px;
                     color: #fff;
                 ">🎮 最近在玩</h4>
-                <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
                     <img src="{{ site.baseurl }}/img/icons/cs2.png" alt="CS2" style="width: 18px; height: 18px;">
-                    <span>《反恐精英 2 (CS2)》</span>
+                    <span class="cs2-title">Counter-Strike 2</span>
+                    <span id="steam-status" class="status-badge status-offline">加载中...</span>
                 </div>
                 <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 8px;">
                     主打模式：竞技匹配 / 死斗练枪
+                </p>
+                <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 4px;">
+                    <i class="fa fa-clock-o" style="margin-right: 4px;"></i>
+                    总游戏时长：<span id="playtime">0</span> 小时
                 </p>
             </div>
 
@@ -236,12 +267,72 @@
                 letter-spacing: 0.3px;
                 margin-top: 15px;
             ">
-                © 2025 林笙的个人主页 | loveyouQAQ
+                © 2025 林笙的个人主页 | CS2玩家专属
             </div>
         </div>
     </div>
 
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        // ====================== 替换这里的配置 ======================
+        const API_KEY = "21CE896575D0F8C85EBEC277BE33E074"; // 例如："1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        const STEAM_ID = "76561199021333952"; // 例如："76561199021333952"
+        const CS2_APPID = 730; // 固定值，不用改
+        // ===========================================================
+
+        // 实时更新Steam状态与时长
+        async function updateSteamData() {
+            const statusEl = document.getElementById("steam-status");
+            const playtimeEl = document.getElementById("playtime");
+            
+            // 加载中状态
+            statusEl.textContent = "加载中...";
+            statusEl.className = "status-badge status-offline";
+
+            try {
+                // 1. 获取Steam个人状态
+                const summaryResponse = await fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${API_KEY}&steamids=${STEAM_ID}`);
+                const summaryData = await summaryResponse.json();
+                
+                if (summaryData.response.players && summaryData.response.players.length > 0) {
+                    const user = summaryData.response.players[0];
+                    // 更新在线状态
+                    if (user.personastate === 1) {
+                        statusEl.textContent = "在线";
+                        statusEl.className = "status-badge status-online";
+                    } else {
+                        statusEl.textContent = "离线";
+                        statusEl.className = "status-badge status-offline";
+                    }
+                }
+
+                // 2. 获取CS2游戏时长
+                const gamesResponse = await fetch(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${API_KEY}&steamid=${STEAM_ID}&include_appinfo=1&include_played_free_games=1`);
+                const gamesData = await gamesResponse.json();
+                
+                if (gamesData.response && gamesData.response.games) {
+                    const cs2Game = gamesData.response.games.find(game => game.appid === CS2_APPID);
+                    if (cs2Game) {
+                        // 转换分钟为小时
+                        const totalHours = Math.floor(cs2Game.playtime_forever / 60);
+                        playtimeEl.textContent = totalHours;
+                    } else {
+                        playtimeEl.textContent = "0";
+                    }
+                }
+
+            } catch (error) {
+                // 加载失败处理
+                statusEl.textContent = "加载失败";
+                playtimeEl.textContent = "0";
+                console.error("Steam数据加载失败：", error);
+            }
+        }
+
+        // 页面加载时更新，每30秒自动刷新
+        updateSteamData();
+        setInterval(updateSteamData, 30000);
+    </script>
 </body>
 </html>
