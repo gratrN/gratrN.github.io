@@ -183,19 +183,45 @@
                     </div>
                 </div>
 
-                <!-- 社交链接（无标题，间隔减半） -->
-                <div style="display: flex; flex-direction: column; gap: 5px;">
-                    <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-box">
-                        <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="width: 18px; height: 18px; margin-right: 6px;">
-                        <span>Steam 主页</span>
-                    </a>
-                    <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-box">
-                        <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="width: 18px; height: 18px; margin-right: 6px;">
-                        <span>抖音 主页</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+               <!-- 社交链接（无标题，间隔减半，sRGB动态彩虹渐变文字） -->
+<div style="display: flex; flex-direction: column; gap: 5px;">
+    <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-box">
+        <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="width: 18px; height: 18px; margin-right: 6px;">
+        <span style="
+            background: linear-gradient(90deg, 
+                color(srgb 1 0.275 0.333),  /* 红 - #ff4655 */
+                color(srgb 0.988 0.714 0.624), /* 橙 - #fcb69f */
+                color(srgb 0.392 1 0.855),  /* 青 - #64ffda */
+                color(srgb 0.486 0.227 0.929), /* 紫 - #7c3aed */
+                color(srgb 1 0.275 0.333)   /* 红（循环） */
+            );
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            animation: srgbRainbow 8s linear infinite;
+        ">Steam 主页</span>
+    </a>
+    <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-box">
+        <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="width: 18px; height: 18px; margin-right: 6px;">
+        <span style="
+            background: linear-gradient(90deg, 
+                color(srgb 1 0.275 0.333),  /* 红 - #ff4655 */
+                color(srgb 0.988 0.714 0.624), /* 橙 - #fcb69f */
+                color(srgb 0.392 1 0.855),  /* 青 - #64ffda */
+                color(srgb 0.486 0.227 0.929), /* 紫 - #7c3aed */
+                color(srgb 1 0.275 0.333)   /* 红（循环） */
+            );
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            animation: srgbRainbow 8s linear infinite;
+        ">抖音 主页</span>
+    </a>
+</div>
 
         <!-- 右侧内容区（修长卡片） -->
         <div style="width: 70%; display: flex; flex-direction: column; gap: 15px;">
