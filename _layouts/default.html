@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="林笙的个人主页">
-    <title>林笙 - KKKKK</title>
+    <title>林笙 - CS2玩家</title>
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
     <!-- 引入外部资源 -->
@@ -41,14 +41,28 @@
         }
 
         a { text-decoration: none !important; }
-        /* 整体容器：左右分栏 */
+        /* 整体容器：强制电脑端左右分栏 */
         .main-wrapper {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            flex-direction: row;
+            flex-direction: row !important; /* 强制横向 */
             gap: 30px;
             align-items: flex-start;
+            width: 100%;
+        }
+        /* 左侧栏固定宽度 */
+        .main-wrapper .left-column {
+            width: 30%;
+            min-width: 280px;
+            flex-shrink: 0; /* 防止被压缩 */
+        }
+        /* 右侧栏自适应宽度 */
+        .main-wrapper .right-column {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         /* 磨砂玻璃卡片（目标页同款） */
         .glass-card {
@@ -60,6 +74,8 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             color: #fff;
+            width: 100% !important; /* 强制卡片占满容器宽度 */
+            max-width: none !important; /* 取消最大宽度限制 */
         }
         /* 卡片hover效果（目标页同款） */
         .glass-card:hover {
@@ -109,28 +125,35 @@
             color: #969696;
         }
 
-        /* 响应式适配 */
-@media (max-width: 768px) {
-    .main-wrapper {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .main-wrapper > div {
-        width: 100% !important;
-        min-width: unset !important;
-    }
-    .main-wrapper .glass-card[style*="position: sticky"] {
-        position: static !important;
-        top: unset !important;
-    }
-}
+        /* 响应式适配（仅手机端切换为上下布局，优化卡片填充） */
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column !important;
+                gap: 20px;
+                padding: 0 15px; /* 手机端左右内边距 */
+            }
+            .main-wrapper .left-column,
+            .main-wrapper .right-column {
+                width: 100% !important;
+                min-width: unset !important;
+            }
+            .main-wrapper .glass-card[style*="position: sticky"] {
+                position: static !important;
+                top: unset !important;
+            }
+            /* 手机端卡片内边距优化 */
+            .glass-card {
+                padding: 20px 15px !important;
+                margin: 0 auto !important;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- 核心容器 -->
     <div class="main-wrapper">
         <!-- 左侧个人信息区（磨砂玻璃卡片） -->
-        <div style="width: 30%; min-width: 280px;">
+        <div class="left-column">
             <div class="glass-card" style="
                 height: fit-content;
                 position: sticky;
@@ -163,7 +186,7 @@
                     font-size: 1.05em;
                     margin-bottom: 20px;
                     text-align: center;
-                ">不知道写什么 占位用</p>
+                ">CS2玩家 / 游戏分享</p>
 
                 <!-- 分隔线 -->
                 <div style="
@@ -172,7 +195,7 @@
                     margin: 20px 0;
                 "></div>
 
-                <!-- 邮箱模块（图标与目标页一致，和文字等高） -->
+                <!-- 邮箱模块（更新图标路径） -->
                 <div style="margin-bottom: 20px; text-align: center;">
                     <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
                         <svg data-prefix="fas" data-icon="envelope" role="img" viewBox="0 0 512 512" aria-hidden="true" class="svg-inline--fa fa-envelope info-icon" style="color: rgba(255,255,255,0.6); font-size: 0.7em; height: 14px;">
@@ -183,60 +206,60 @@
                     </div>
                 </div>
 
-               <!-- 社交链接（无标题，间隔减半，sRGB动态彩虹渐变文字） -->
-<div style="display: flex; flex-direction: column; gap: 5px;">
-    <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-box">
-        <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="width: 18px; height: 18px; margin-right: 6px;">
-        <span style="
-            background: linear-gradient(90deg, 
-                color(srgb 1 0.275 0.333),  /* 红 - #ff4655 */
-                color(srgb 0.988 0.714 0.624), /* 橙 - #fcb69f */
-                color(srgb 0.392 1 0.855),  /* 青 - #64ffda */
-                color(srgb 0.486 0.227 0.929), /* 紫 - #7c3aed */
-                color(srgb 1 0.275 0.333)   /* 红（循环） */
-            );
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 600;
-            animation: srgbRainbow 8s linear infinite;
-        ">Steam 主页</span>
-    </a>
-    <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-box">
-        <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="width: 18px; height: 18px; margin-right: 6px;">
-        <span style="
-            background: linear-gradient(90deg, 
-                color(srgb 1 0.275 0.333),  /* 红 - #ff4655 */
-                color(srgb 0.988 0.714 0.624), /* 橙 - #fcb69f */
-                color(srgb 0.392 1 0.855),  /* 青 - #64ffda */
-                color(srgb 0.486 0.227 0.929), /* 紫 - #7c3aed */
-                color(srgb 1 0.275 0.333)   /* 红（循环） */
-            );
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 600;
-            animation: srgbRainbow 8s linear infinite;
-        ">抖音 主页</span>
-    </a>
-</div>
+                <!-- 社交链接（无标题，间隔减半，sRGB动态彩虹渐变文字） -->
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-box">
+                        <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="width: 18px; height: 18px; margin-right: 6px;">
+                        <span style="
+                            background: linear-gradient(90deg, 
+                                color(srgb 1 0.275 0.333),  /* 红 - #ff4655 */
+                                color(srgb 0.988 0.714 0.624), /* 橙 - #fcb69f */
+                                color(srgb 0.392 1 0.855),  /* 青 - #64ffda */
+                                color(srgb 0.486 0.227 0.929), /* 紫 - #7c3aed */
+                                color(srgb 1 0.275 0.333)   /* 红（循环） */
+                            );
+                            background-size: 200% 100%;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            background-clip: text;
+                            font-weight: 600;
+                            animation: srgbRainbow 8s linear infinite;
+                        ">Steam 主页</span>
+                    </a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-box">
+                        <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="width: 18px; height: 18px; margin-right: 6px;">
+                        <span style="
+                            background: linear-gradient(90deg, 
+                                color(srgb 1 0.275 0.333),  /* 红 - #ff4655 */
+                                color(srgb 0.988 0.714 0.624), /* 橙 - #fcb69f */
+                                color(srgb 0.392 1 0.855),  /* 青 - #64ffda */
+                                color(srgb 0.486 0.227 0.929), /* 紫 - #7c3aed */
+                                color(srgb 1 0.275 0.333)   /* 红（循环） */
+                            );
+                            background-size: 200% 100%;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            background-clip: text;
+                            font-weight: 600;
+                            animation: srgbRainbow 8s linear infinite;
+                        ">抖音 主页</span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <!-- 右侧内容区（修长卡片） -->
-        <div style="width: 70%; display: flex; flex-direction: column; gap: 15px;">
+        <div class="right-column">
             <!-- CS2游戏卡片（sRGB动态彩虹渐变版） -->
             <div class="glass-card" style="
                 padding: 20px 25px;
-                width: 100%;
-                max-width: 400px;
             ">
                 <h4 style="
                     font-size: 1.1em;
                     font-weight: 600;
                     margin-bottom: 12px;
                     color: #fff;
-                ">🎮 我的最爱</h4>
+                ">🎮 最近在玩</h4>
                 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
                     <img src="{{ site.baseurl }}/img/icons/cs2.png" alt="CS2" style="width: 18px; height: 18px;">
                     <!-- sRGB标准动态彩虹渐变字体 -->
@@ -258,7 +281,7 @@
                     <span class="status-badge status-offline">离线</span>
                 </div>
                 <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 8px;">
-                    快来找我玩
+                    主打模式：竞技匹配 / 死斗练枪
                 </p>
                 <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 4px;">
                     <i class="fa fa-clock-o" style="margin-right: 4px;"></i>
@@ -269,8 +292,6 @@
             <!-- 微信赞赏码卡片 -->
             <div class="glass-card" style="
                 padding: 20px 25px;
-                width: 100%;
-                max-width: 400px;
                 text-align: center;
             ">
                 <h4 style="
