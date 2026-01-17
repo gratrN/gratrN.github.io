@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- 核心：开启移动端适配 -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="林笙的个人主页">
     <title>林笙 - 个人主页</title>
@@ -13,14 +12,14 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 核心样式：动态渐变背景+响应式布局 -->
+    <!-- 核心样式：深色大跨度渐变+响应式布局 -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            /* 动态彩虹渐变背景 */
+            /* 深色大跨度渐变背景（紫黑→深蓝→墨紫，跨度大且高级） */
             background: linear-gradient(135deg, 
-                #ff6b6b 0%, #feca57 20%, #48dbfb 40%, 
-                #1dd1a1 60%, #5f27cd 80%, #ff6b6b 100%);
+                #0d0221 0%, #151638 20%, #212670 40%, 
+                #151638 60%, #0d0221 80%, #0d0221 100%);
             background-attachment: fixed;
             background-size: 400% 400%;
             animation: rainbowFlow 15s ease-in-out infinite;
@@ -29,7 +28,6 @@
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
-            /* 响应式内边距：电脑大 padding，手机小 padding */
             padding: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 40px);
         }
 
@@ -45,26 +43,25 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            /* 核心响应式：手机自动改为上下布局 */
             flex-direction: row;
             gap: 30px;
             align-items: flex-start;
         }
-        /* 通用玻璃卡片样式 */
+        /* 通用玻璃卡片样式（适配深色背景，文字更清晰） */
         .glass-card {
             background: rgba(255, 255, 255, 0.6) !important;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             color: #12141a;
         }
-        /* 卡片hover效果 */
+        /* 卡片hover效果（深色背景下更明显） */
         .glass-card:hover {
             background: rgba(255, 255, 255, 0.75) !important;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
             transform: translateY(-2px);
         }
         /* 社交链接样式 */
@@ -76,34 +73,27 @@
             gap: 12px;
         }
 
-        /* ========== 响应式核心规则 ========== */
-        /* 平板/手机（屏幕宽度≤768px） */
+        /* 响应式核心规则 */
         @media (max-width: 768px) {
-            /* 整体容器改为上下布局 */
             .main-wrapper {
                 flex-direction: column;
                 gap: 20px;
             }
-            /* 左右模块都占100%宽度 */
             .main-wrapper > div {
                 width: 100% !important;
                 min-width: unset !important;
             }
-            /* 左侧卡片取消固定定位，适配手机滚动 */
             .main-wrapper .glass-card[style*="position: sticky"] {
                 position: static !important;
                 top: unset !important;
             }
-            /* 右侧小卡片宽度自适应 */
             .main-wrapper a.glass-card {
                 max-width: 100% !important;
             }
-            /* 头像缩小，适配手机屏幕 */
             .main-wrapper img[alt="林笙"] {
                 width: 100px !important;
                 height: 100px !important;
             }
-            /* 文字大小适配手机 */
             .main-wrapper h1 {
                 font-size: 1.8em !important;
             }
@@ -116,8 +106,8 @@
 <body>
     <!-- 核心容器：左右整体布局 -->
     <div class="main-wrapper">
-        <!-- 左侧个人信息区 -->
-        <div style="width: 35%; min-width: 300px;">
+        <!-- 左侧个人信息区（收窄为30%，更美观） -->
+        <div style="width: 30%; min-width: 280px;">
             <div class="glass-card" style="
                 height: fit-content;
                 position: sticky;
@@ -150,7 +140,7 @@
                     font-size: 1.05em;
                     margin-bottom: 30px;
                     text-align: center;
-                ">兴趣分享 / 游戏 / 创作</p>
+                ">CS2玩家 / 游戏分享 / 创作</p>
 
                 <!-- 分隔线 -->
                 <div style="
@@ -170,14 +160,14 @@
                         gap: 12px;
                     ">
                         <i class="fa fa-envelope-o" style="
-                            color: #ff6b6b;
+                            color: #212670;
                             font-size: 1.2em;
                         "></i>
                         2585263682@qq.com
                     </p>
                 </div>
 
-                <!-- 社交平台 -->
+                <!-- 社交平台（仅保留Steam+抖音，无重复） -->
                 <h3 style="
                     font-size: 1.15em;
                     font-weight: 600;
@@ -201,21 +191,52 @@
             </div>
         </div>
 
-        <!-- 右侧链接区（小卡片） -->
-        <div style="width: 65%; display: flex; flex-direction: column; gap: 20px;">
-            <!-- 抖音小卡片 -->
-            <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="glass-card" style="
+        <!-- 右侧内容区（70%宽度，填充CS2+个人简介+赞赏码，不空洞） -->
+        <div style="width: 70%; display: flex; flex-direction: column; gap: 20px;">
+            <!-- 1. 个人简介卡片（填充内容，不空洞） -->
+            <div class="glass-card" style="
                 padding: 25px 30px;
                 width: 100%;
                 max-width: 300px;
             ">
-                <div class="social-link">
-                    <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="width: 22px; height: 22px;">
-                    <span>抖音 主页</span>
-                </div>
-            </a>
+                <h4 style="
+                    font-size: 1.1em;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    color: #12141a;
+                ">📝 关于我</h4>
+                <p style="
+                    font-size: 0.9em;
+                    color: #333;
+                    line-height: 1.6;
+                ">
+                    专注CS2的休闲玩家，分享游戏日常、身法技巧和开箱趣事。<br>
+                    偶尔更新抖音游戏短视频，欢迎交流～
+                </p>
+            </div>
 
-            <!-- 苹果中国小卡片 -->
+            <!-- 2. CS2游戏卡片（替换成你想要的CS2） -->
+            <div class="glass-card" style="
+                padding: 25px 30px;
+                width: 100%;
+                max-width: 300px;
+            ">
+                <h4 style="
+                    font-size: 1.1em;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    color: #12141a;
+                ">🎮 最近在玩</h4>
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+                    <img src="{{ site.baseurl }}/img/icons/cs2.png" alt="CS2" style="width: 22px; height: 22px;">
+                    <span>《反恐精英 2 (CS2)》</span>
+                </div>
+                <p style="font-size: 0.85em; color: #666; margin-top: 8px;">
+                    主打模式：竞技匹配 / 死斗练枪
+                </p>
+            </div>
+
+            <!-- 3. 苹果中国官网卡片（保留原有实用链接） -->
             <a href="https://www.apple.com/cn/" target="_blank" class="glass-card" style="
                 padding: 25px 30px;
                 width: 100%;
@@ -227,7 +248,7 @@
                 </div>
             </a>
 
-            <!-- 微信赞赏码模块 -->
+            <!-- 4. 微信赞赏码卡片（自愿打赏，丰富内容） -->
             <div class="glass-card" style="
                 padding: 25px 30px;
                 width: 100%;
@@ -264,10 +285,10 @@
                 color: #fff;
                 font-size: 0.85em;
                 letter-spacing: 0.3px;
-                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
                 margin-top: 20px;
             ">
-                © 2025 林笙的个人主页 | 保留所有权利
+                © 2025 林笙的个人主页 | LOVEQAQ
             </div>
         </div>
     </div>
