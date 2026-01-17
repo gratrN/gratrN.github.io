@@ -202,7 +202,7 @@
 
         <!-- 右侧内容区（修长卡片） -->
         <div style="width: 70%; display: flex; flex-direction: column; gap: 15px;">
-          <!-- CS2游戏卡片（sRGB彩虹渐变版） -->
+         <!-- CS2游戏卡片（sRGB动态彩虹渐变版） -->
 <div class="glass-card" style="
     padding: 20px 25px;
     width: 100%;
@@ -213,11 +213,12 @@
         font-weight: 600;
         margin-bottom: 12px;
         color: #fff;
-    ">🎮 爱死了</h4>
+    ">🎮 best LOVE</h4>
     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
         <img src="{{ site.baseurl }}/img/icons/cs2.png" alt="CS2" style="width: 18px; height: 18px;">
-        <!-- sRGB标准彩虹渐变字体（静态无动画） -->
+        <!-- sRGB标准动态彩虹渐变字体 -->
         <span style="
+            /* sRGB标准彩虹渐变 */
             background: linear-gradient(90deg, 
                 color(srgb 1 0.275 0.333),  /* 红 - #ff4655 */
                 color(srgb 0.988 0.714 0.624), /* 橙 - #fcb69f */
@@ -230,17 +231,27 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 700;
+            /* 动态滚动动画 */
+            animation: srgbRainbow 8s linear infinite;
         ">Counter-Strike 2</span>
         <span class="status-badge status-offline">离线</span>
     </div>
     <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 8px;">
-        来和我玩csQAQ
+        练枪练枪!!!!!
     </p>
     <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 4px;">
         <i class="fa fa-clock-o" style="margin-right: 4px;"></i>
         总游戏时长：1320 小时
     </p>
 </div>
+
+<!-- 动态渐变动画样式（需添加到<head>的<style>中） -->
+<style>
+    @keyframes srgbRainbow {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 200% 0%; }
+    }
+</style>
             <!-- 微信赞赏码卡片 -->
             <div class="glass-card" style="
                 padding: 20px 25px;
@@ -284,5 +295,311 @@
             </div>
         </div>
     </div>
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="林笙的个人主页">
+    <title>林笙 - CS2玩家</title>
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
+    <!-- 引入外部资源 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 核心样式：黑色星空背景+磨砂玻璃卡片 -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            /* 黑色星空动态背景 */
+            background: #000 url('https://cdn.jsdelivr.net/gh/satnaing/astro@1.0.0/assets/starfield.svg') repeat top center;
+            background-attachment: fixed;
+            animation: starMove 120s linear infinite;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 40px);
+        }
+
+        /* 星空流动动画 */
+        @keyframes starMove {
+            0% { background-position: 0 0; }
+            100% { background-position: -1000px 1000px; }
+        }
+
+        /* sRGB动态彩虹渐变动画 */
+        @keyframes srgbRainbow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        a { text-decoration: none !important; }
+        /* 整体容器：左右分栏 */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        /* 磨砂玻璃卡片（目标页同款） */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        /* 卡片hover效果（目标页同款） */
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+        /* 左侧社交链接小框（间隔减半） */
+        .social-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 0;
+            margin: 5px 0; /* 间隔减半 */
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+        .social-box:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-1px);
+        }
+        /* 邮箱链接（去掉小点下划线） */
+        .email-link {
+            position: relative;
+            color: #fff;
+            padding-bottom: 0;
+        }
+        .email-link::after {
+            display: none; /* 完全去掉小点 */
+        }
+        /* 状态标签样式 */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .status-online {
+            background: rgba(80, 200, 120, 0.2);
+            color: #50c878;
+        }
+        .status-offline {
+            background: rgba(150, 150, 150, 0.2);
+            color: #969696;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .main-wrapper > div {
+                width: 100% !important;
+                min-width: unset !important;
+            }
+            .main-wrapper .glass-card[style*="position: sticky"] {
+                position: static !important;
+                top: unset !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 核心容器 -->
+    <div class="main-wrapper">
+        <!-- 左侧个人信息区（磨砂玻璃卡片） -->
+        <div style="width: 30%; min-width: 280px;">
+            <div class="glass-card" style="
+                height: fit-content;
+                position: sticky;
+                top: 60px;
+                padding: 35px 25px; /* 紧凑内边距 */
+            ">
+                <!-- 头像模块 -->
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <img src="{{ site.baseurl }}/img/avatar.png" alt="林笙" style="
+                        width: 130px;
+                        height: 130px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        border: 3px solid rgba(255, 255, 255, 0.2);
+                        box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+                    ">
+                </div>
+
+                <!-- 姓名/身份 -->
+                <h1 style="
+                    font-size: 2em;
+                    font-weight: 700;
+                    margin-bottom: 8px;
+                    color: #fff;
+                    text-align: center;
+                    letter-spacing: 0.5px;
+                ">林笙</h1>
+                <p style="
+                    color: rgba(255,255,255,0.7);
+                    font-size: 1.05em;
+                    margin-bottom: 20px;
+                    text-align: center;
+                ">CS2玩家 / 游戏分享</p>
+
+                <!-- 分隔线 -->
+                <div style="
+                    height: 1px;
+                    background: rgba(255, 255, 255, 0.1);
+                    margin: 20px 0;
+                "></div>
+
+                <!-- 邮箱模块（图标与目标页一致，和文字等高） -->
+                <div style="margin-bottom: 20px; text-align: center;">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+                        <svg data-prefix="fas" data-icon="envelope" role="img" viewBox="0 0 512 512" aria-hidden="true" class="svg-inline--fa fa-envelope info-icon" style="color: rgba(255,255,255,0.6); font-size: 0.7em; height: 14px;">
+                            <path fill="currentColor" d="M48 64c-26.5 0-48 21.5-48 48 0 15.7 7.1 29.3 19.2 38.4l208 156c17.1 12.8 40.5 12.8 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48H48zM0 196l0 35.3 28.7 64 64l138.4 0c35.3 0 64-28.7 64-64l0-64-10-188-198.4 8c-34.1 25.6-81.1 25.6-115.2 0L0 196z"></path>
+                        </svg>
+                        <span style="color: rgba(255,255,255,0.8); font-size: 0.8em;">邮箱:</span>
+                        <a href="mailto:2585263682@qq.com" class="email-link" style="font-size: 0.8em;">2585263682@qq.com</a>
+                    </div>
+                </div>
+
+                <!-- 社交链接（无标题，间隔减半） -->
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <a href="https://steamcommunity.com/profiles/76561199021333952/" target="_blank" class="social-box">
+                        <img src="{{ site.baseurl }}/img/icons/steam.png" alt="Steam" style="width: 18px; height: 18px; margin-right: 6px;">
+                        <span>Steam 主页</span>
+                    </a>
+                    <a href="https://www.douyin.com/user/MS4wLjABAAAAaJG72gWDCDnXPzKW5DV0osIaTfRqFJgzgaQWzVlfNSU?from_tab_name=main" target="_blank" class="social-box">
+                        <img src="{{ site.baseurl }}/img/icons/douyin.png" alt="抖音" style="width: 18px; height: 18px; margin-right: 6px;">
+                        <span>抖音 主页</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧内容区（修长卡片） -->
+        <div style="width: 70%; display: flex; flex-direction: column; gap: 15px;">
+            <!-- CS2游戏卡片（sRGB动态彩虹渐变版） -->
+            <div class="glass-card" style="
+                padding: 20px 25px;
+                width: 100%;
+                max-width: 400px;
+            ">
+                <h4 style="
+                    font-size: 1.1em;
+                    font-weight: 600;
+                    margin-bottom: 12px;
+                    color: #fff;
+                ">🎮 最近在玩</h4>
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+                    <img src="{{ site.baseurl }}/img/icons/cs2.png" alt="CS2" style="width: 18px; height: 18px;">
+                    <!-- sRGB标准动态彩虹渐变字体 -->
+                    <span style="
+                        background: linear-gradient(90deg, 
+                            color(srgb 1 0.275 0.333),  /* 红 - #ff4655 */
+                            color(srgb 0.988 0.714 0.624), /* 橙 - #fcb69f */
+                            color(srgb 0.392 1 0.855),  /* 青 - #64ffda */
+                            color(srgb 0.486 0.227 0.929), /* 紫 - #7c3aed */
+                            color(srgb 1 0.275 0.333)   /* 红（循环） */
+                        );
+                        background-size: 200% 100%;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        font-weight: 700;
+                        animation: srgbRainbow 8s linear infinite;
+                    ">Counter-Strike 2</span>
+                    <span class="status-badge status-offline">离线</span>
+                </div>
+                <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 8px;">
+                    主打模式：竞技匹配 / 死斗练枪
+                </p>
+                <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 4px;">
+                    <i class="fa fa-clock-o" style="margin-right: 4px;"></i>
+                    总游戏时长：320 小时
+                </p>
+            </div>
+
+            <!-- 微信赞赏码卡片 -->
+            <div class="glass-card" style="
+                padding: 20px 25px;
+                width: 100%;
+                max-width: 400px;
+                text-align: center;
+            ">
+                <h4 style="
+                    font-size: 1.1em;
+                    font-weight: 600;
+                    margin-bottom: 12px;
+                    color: #fff;
+                ">✨ 自愿打赏支持</h4>
+                <p style="
+                    font-size: 0.9em;
+                    color: rgba(255,255,255,0.7);
+                    margin-bottom: 12px;
+                ">你的支持是我更新的动力 🥰</p>
+                <img src="{{ site.baseurl }}/img/wechat-appreciate.png" alt="微信赞赏码" style="
+                    width: 160px;
+                    height: 160px;
+                    border-radius: 8px;
+                    border: 2px solid rgba(255, 255, 255, 0.2);
+                ">
+                <p style="
+                    font-size: 0.85em;
+                    color: rgba(255,255,255,0.6);
+                    margin-top: 8px;
+                ">扫码即可打赏，感谢你的支持</p>
+            </div>
+
+            <!-- 页脚版权 -->
+            <div style="
+                text-align: center;
+                color: rgba(255,255,255,0.5);
+                font-size: 0.85em;
+                letter-spacing: 0.3px;
+                margin-top: 15px;
+            ">
+                © 2025 林笙的个人主页 | CS2玩家专属
+            </div>
+
+            <!-- 访问量统计 -->
+            <div style="
+                text-align: center;
+                color: rgba(255,255,255,0.5);
+                font-size: 0.8em;
+                letter-spacing: 0.5px;
+                margin-top: 20px;
+                padding-top: 10px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            ">
+                <i class="fa fa-eye" style="margin-right: 6px; color: #64ffda;"></i>
+                累计访问量: <span id="busuanzi_value_site_pv">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- 不蒜子访问统计脚本 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>
 
     
