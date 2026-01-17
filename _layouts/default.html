@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 核心：开启移动端适配 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="林笙的个人主页">
     <title>林笙 - 个人主页</title>
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 核心样式：动态渐变背景+整体布局 -->
+    <!-- 核心样式：动态渐变背景+响应式布局 -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -28,7 +29,8 @@
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
-            padding: 60px 40px;
+            /* 响应式内边距：电脑大 padding，手机小 padding */
+            padding: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 40px);
         }
 
         @keyframes rainbowFlow {
@@ -38,11 +40,12 @@
         }
 
         a { text-decoration: none !important; }
-        /* 整体容器：确保左右是一个整体，滚动不分离 */
+        /* 整体容器：电脑左右分栏，手机上下堆叠 */
         .main-wrapper {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
+            /* 核心响应式：手机自动改为上下布局 */
             flex-direction: row;
             gap: 30px;
             align-items: flex-start;
@@ -71,6 +74,42 @@
             color: #222;
             padding: 10px 0;
             gap: 12px;
+        }
+
+        /* ========== 响应式核心规则 ========== */
+        /* 平板/手机（屏幕宽度≤768px） */
+        @media (max-width: 768px) {
+            /* 整体容器改为上下布局 */
+            .main-wrapper {
+                flex-direction: column;
+                gap: 20px;
+            }
+            /* 左右模块都占100%宽度 */
+            .main-wrapper > div {
+                width: 100% !important;
+                min-width: unset !important;
+            }
+            /* 左侧卡片取消固定定位，适配手机滚动 */
+            .main-wrapper .glass-card[style*="position: sticky"] {
+                position: static !important;
+                top: unset !important;
+            }
+            /* 右侧小卡片宽度自适应 */
+            .main-wrapper a.glass-card {
+                max-width: 100% !important;
+            }
+            /* 头像缩小，适配手机屏幕 */
+            .main-wrapper img[alt="林笙"] {
+                width: 100px !important;
+                height: 100px !important;
+            }
+            /* 文字大小适配手机 */
+            .main-wrapper h1 {
+                font-size: 1.8em !important;
+            }
+            .main-wrapper h3 {
+                font-size: 1em !important;
+            }
         }
     </style>
 </head>
@@ -187,6 +226,37 @@
                     <span>苹果中国官网</span>
                 </div>
             </a>
+
+            <!-- 微信赞赏码模块 -->
+            <div class="glass-card" style="
+                padding: 25px 30px;
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            ">
+                <h4 style="
+                    font-size: 1.1em;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    color: #12141a;
+                ">✨ 自愿打赏支持</h4>
+                <p style="
+                    font-size: 0.9em;
+                    color: #333;
+                    margin-bottom: 15px;
+                ">你的支持是我更新的动力 🥰</p>
+                <img src="{{ site.baseurl }}/img/wechat-appreciate.png" alt="微信赞赏码" style="
+                    width: 160px;
+                    height: 160px;
+                    border-radius: 8px;
+                    border: 2px solid rgba(255, 255, 255, 0.8);
+                ">
+                <p style="
+                    font-size: 0.85em;
+                    color: #666;
+                    margin-top: 10px;
+                ">扫码即可打赏，感谢你的支持</p>
+            </div>
 
             <!-- 页脚版权 -->
             <div style="
