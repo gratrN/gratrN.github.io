@@ -53,13 +53,14 @@
             object-fit: cover;
         }
         .back-link {
-            display: inline-flex;
-            align-items: center;
-            color: #64ffda;
-            text-decoration: none;
-            font-size: 0.9em;
-            margin-top: 15px;
-        }
+    display: inline-flex;
+    align-items: center;
+    color: #64ffda;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 15px;
+    gap: 6px; /* 箭头和文字之间留6px间距，更美观 */
+}
         .back-link i {
             margin-right: 6px;
         }
@@ -78,7 +79,7 @@
        
        <!-- 修复后的返回主页链接（箭头图标正常显示） -->
 <a href="/" class="back-link">
-    <<i class="fa fa-arrow-left"></</i> 返回主页
+    <i class="fa fa-arrow-left"></i> 返回主页
 </a>
         </a>
     </div>
