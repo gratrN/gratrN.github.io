@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>打赏支持 - 林笙的个人主页</title>
+    <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #000 url('https://cdn.jsdelivr.net/gh/satnaing/astro@1.0.0/assets/starfield.svg') repeat top center;
+            background-attachment: fixed;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .reward-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            padding: 40px 25px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .reward-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .reward-desc {
+            font-size: 0.95em;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .reward-qrcode {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.2);
+            margin: 0 auto 20px;
+            object-fit: cover;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #64ffda;
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+        .back-link i {
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reward-card">
+        <h2 class="reward-title">✨ 自愿打赏支持</h2>
+        <p class="reward-desc">
+            感谢你愿意花时间访问我的主页，也感谢你对我的支持！<br>
+            打赏金额随意，每一份支持都是我更新的动力 🥰
+        </p>
+        <!-- 替换为你的打赏码图片路径 -->
+        <img src="{{ site.baseurl }}/img/wechat-appreciate.png" alt="微信打赏码" class="reward-qrcode">
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.85em;">扫码即可打赏，感谢你的支持</p>
+        <!-- 返回主页链接 -->
+        <a href="{{ site.baseurl }}/" class="back-link">
+            <<i class="fa fa-arrow-left"></</i> 返回主页
+        </a>
+    </div>
+</body>
+</html>
