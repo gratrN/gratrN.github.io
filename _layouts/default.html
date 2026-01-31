@@ -5,33 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="林笙的个人主页">
-    <title>林笙 - KKKKK</title>
+    <title>林笙 - CS2玩家</title>
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
     <!-- 引入外部资源 -->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 核心样式：黑色星空背景+磨砂玻璃卡片 -->
+    <!-- 核心样式：像素星空视差背景+磨砂玻璃卡片 -->
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            /* 黑色星空动态背景 */
-            background: #000 url('https://cdn.jsdelivr.net/gh/satnaing/astro@1.0.0/assets/starfield.svg') repeat top center;
-            background-attachment: fixed;
-            animation: starMove 120s linear infinite;
+            /* 像素星空背景（视差效果） */
+            background: #000;
             color: #fff;
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
             padding: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 40px);
+            position: relative;
         }
 
-        /* 星空流动动画 */
-        @keyframes starMove {
+        /* 像素星空视差层 */
+        #stars, #stars2, #stars3 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+        }
+        #stars {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="1" height="1" fill="%23ffffff"/><rect x="30" width="1" height="1" fill="%23ffffff"/><rect x="60" width="1" height="1" fill="%23ffffff"/><rect y="30" width="1" height="1" fill="%23ffffff"/><rect x="30" y="30" width="1" height="1" fill="%23ffffff"/><rect x="60" y="30" width="1" height="1" fill="%23ffffff"/><rect y="60" width="1" height="1" fill="%23ffffff"/><rect x="30" y="60" width="1" height="1" fill="%23ffffff"/><rect x="60" y="60" width="1" height="1" fill="%23ffffff"/></svg>');
+            background-size: 50px 50px;
+            animation: move-stars 50s linear infinite;
+        }
+        #stars2 {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="1" height="1" fill="%23ffffff"/><rect x="10" width="1" height="1" fill="%23ffffff"/><rect x="20" width="1" height="1" fill="%23ffffff"/><rect y="10" width="1" height="1" fill="%23ffffff"/><rect x="10" y="10" width="1" height="1" fill="%23ffffff"/><rect x="20" y="10" width="1" height="1" fill="%23ffffff"/><rect y="20" width="1" height="1" fill="%23ffffff"/><rect x="10" y="20" width="1" height="1" fill="%23ffffff"/><rect x="20" y="20" width="1" height="1" fill="%23ffffff"/></svg>');
+            background-size: 20px 20px;
+            opacity: 0.5;
+            animation: move-stars 30s linear infinite;
+        }
+        #stars3 {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="1" height="1" fill="%23ffffff"/></svg>');
+            background-size: 10px 10px;
+            opacity: 0.3;
+            animation: move-stars 15s linear infinite;
+        }
+        @keyframes move-stars {
             0% { background-position: 0 0; }
-            100% { background-position: -1000px 1000px; }
+            100% { background-position: 1000px 1000px; }
         }
 
         /* sRGB动态彩虹渐变动画 */
@@ -147,33 +172,14 @@
                 margin: 0 auto !important;
             }
         }
-            /* 流星背景样式 */
-    .meteor-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .meteor {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: #ffffff;
-      border-radius: 50%;
-      opacity: 0;
-      box-shadow: 
-        0 0 8px 2px rgba(255,255,255,0.8),
-        0 0 16px 4px rgba(255,255,255,0.5),
-        0 0 24px 6px rgba(255,255,255,0.2);
-      transform-origin: top left;
-    }
     </style>
 </head>
 <body>
+    <!-- 像素星空视差背景层 -->
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
     <!-- 核心容器 -->
     <div class="main-wrapper">
         <!-- 左侧个人信息区（磨砂玻璃卡片） -->
@@ -210,7 +216,7 @@
                     font-size: 1.05em;
                     margin-bottom: 20px;
                     text-align: center;
-                ">烦死人了就放一天</p>
+                ">CS2玩家 / 游戏分享</p>
 
                 <!-- 分隔线 -->
                 <div style="
@@ -283,7 +289,7 @@
                     font-weight: 600;
                     margin-bottom: 12px;
                     color: #fff;
-                ">🎮 我的最爱</h4>
+                ">🎮 最近在玩</h4>
                 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
                     <img src="{{ site.baseurl }}/img/icons/cs2.png" alt="CS2" style="width: 18px; height: 18px;">
                     <!-- sRGB标准动态彩虹渐变字体 -->
@@ -305,10 +311,10 @@
                     <span class="status-badge status-offline">离线</span>
                 </div>
                 <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 8px;">
-                    快来和我玩QAQ
+                    主打模式：竞技匹配 / 死斗练枪
                 </p>
                 <p style="font-size: 0.85em; color: rgba(255,255,255,0.6); margin-top: 4px;">
-                    <i class="fa fa-clock-o" style="margin-right: 4px;"></i>
+                    <<i class="fa fa-clock-o" style="margin-right: 4px;"></</i>
                     总游戏时长：1320 小时
                 </p>
             </div>
@@ -323,7 +329,7 @@
                     font-weight: 600;
                     margin-bottom: 12px;
                     color: #fff;
-                ">✨ 自愿打赏支持  </h4>
+                ">✨ 自愿打赏支持</h4>
                 <p style="
                     font-size: 0.9em;
                     color: rgba(255,255,255,0.7);
@@ -352,73 +358,10 @@
             ">
                 © 2025 林笙的个人主页 | love you QAQ
             </div>
-
-            <!-- 访问量统计 -->
-            <div style="
-                text-align: center;
-                color: rgba(255,255,255,0.5);
-                font-size: 0.8em;
-                letter-spacing: 0.5px;
-                margin-top: 20px;
-                padding-top: 10px;
-                border-top: 1px solid rgba(255,255,255,0.1);
-            ">
-                <i class="fa fa-eye" style="margin-right: 6px; color: #64ffda;"></i>
-                累计访问量: <span id="busuanzi_value_site_pv">0</span>
-            </div>
         </div>
     </div>
 
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- 不蒜子访问统计脚本 -->
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-      <!-- 流星背景动画 -->
-  <script>
-    (function() {
-      const container = document.createElement('div');
-      container.className = 'meteor-container';
-      document.body.appendChild(container);
-
-      function createMeteor() {
-        const meteor = document.createElement('div');
-        meteor.className = 'meteor';
-        
-        const startX = Math.random() * window.innerWidth;
-        const startY = Math.random() * window.innerHeight * 0.5;
-        const angle = Math.random() * 30 + 150;
-        const distance = Math.random() * 400 + 40;
-        const duration = Math.random() * 0.5 + 0.2;
-        const delay = Math.random() * 5;
-
-        const endX = startX + distance * Math.cos(angle * Math.PI / 180);
-        const endY = startY + distance * Math.sin(angle * Math.PI / 180);
-
-        meteor.style.left = `${startX}px`;
-        meteor.style.top = `${startY}px`;
-        meteor.style.transform = `rotate(${angle}deg)`;
-        meteor.style.transition = `opacity ${duration}s linear, transform ${duration}s linear`;
-
-        container.appendChild(meteor);
-
-        setTimeout(() => {
-          meteor.style.opacity = '1';
-          meteor.style.transform = `rotate(${angle}deg) translate(${distance}px, 0)`;
-          
-          setTimeout(() => {
-            meteor.style.opacity = '0';
-            setTimeout(() => {
-              container.removeChild(meteor);
-            }, 300);
-          }, duration * 1000);
-        }, delay * 1000);
-      }
-
-      setInterval(createMeteor, Math.random() * 500 + 600);
-      for (let i = 0; i < 3; i++) {
-        createMeteor();
-      }
-    })();
-  </script>
 </body>
 </html>
